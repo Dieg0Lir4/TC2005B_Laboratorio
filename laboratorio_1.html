@@ -28,16 +28,96 @@
     del documento HTML, es decir, todo el contenido visible de la página web.-->
 
 <body>
-    <!--h# Define los encabezados, mientras menor el numero más grande el titulo (del 1 al 6).-->
+    <!--<h#> Define los encabezados, mientras menor el numero más grande el titulo (del 1 al 6).-->
     <h1>Laboratorio 1</h1>
-    <!--crea una línea horizontal-->
+    <!-- <hr> crea una línea horizontal-->
     <hr>
     <h2>Diego Lira García</h2>
     <h3>A01710369</h3>
     <h3>a01710369@tec.mx</h3>
     <h3>Ing. en Tecnologías Computacionales</h3>
     <hr>
-   
+
+    <h1>Preguntas</h1>
+
+    <h3>¿Cuál es la diferencia entre Internet y la World Wide Web?</h3>
+
+    <p>
+        El internet es la conexión entre dispositivos, como computadoras
+        o teléfonos celulares a nivel mundial. Mientras que World Wide Web es un sistema de información en el
+        Internet que permite a los usuarios acceder y transferir información.
+    </p>
+
+    <h3>¿Cuáles son las partes de un URL?</h3>
+
+    <img src="partes-url-ejemplos.png" alt="Partes de un URL">
+
+    <p>
+        Pukocz, E. (2019, November 3). Partes de una URL con ejemplos y explicación fácil. Edyta Pukocz.
+        https://edytapukocz.com/url-partes-ejemplos-facil/
+    </p>
+
+    <br>
+
+    <ul>
+        <li>Protocolo: Indica el protocolo de comunicación utilizado para acceder al recurso</li>
+        <li>Subdominio: Es una parte opcional que precede al dominio principal.</li>
+        <li>Dominio: Es la dirección principal del recurso.</li>
+        <li>TLD (Top-Level Domain): Es la parte final del dominio y generalmente indica la naturaleza del sitio o su
+            origen</li>
+        <li>geográfico. Ejemplos comunes incluyen ".com", ".org", ".net", ".es", etc.</li>
+        <li>Ruta: Indica la ubicación específica del recurso en el servidor.</li>
+        <li>Parámetro: Se utiliza para enviar información adicional al servidor. Puede contener múltiples pares</li>
+        <li>(clave=valor) separados por "&" y viene despues de “?”</li>
+        <li>Etiqueta: La "etiqueta" no es una parte estándar de un URL. Puede referirse al fragmento, que se utiliza
+            para</li>
+        <li>indicar un fragmento específico dentro de la página web y se inicia con "#".</li>
+    </ul>
+
+    <h3>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</h3>
+
+    <ul>
+        <li>
+            GET:
+            Solicita datos de un recurso específico. Los parámetros se envían a través de la URL. No debe modificar el
+            estado del servidor.
+        </li>
+
+        <li>
+            HEAD:
+            Solicita únicamente los encabezados del recurso, sin el cuerpo de la respuesta. Se utiliza para obtener
+            información sobre el recurso, como su tamaño o fecha de modificación, sin descargar el contenido completo.
+        </li>
+
+        <li>
+            POST:
+            Envía datos al servidor para ser procesados y puede crear un nuevo recurso. Los datos se envían en el cuerpo
+            del
+            mensaje. Puede modificar el estado del servidor.
+        </li>
+
+        <li>
+            PUT:
+            Actualiza o crea un recurso específico en el servidor. Similar a POST, pero se utiliza para actualizar
+            recursos
+            en ubicaciones específicas.
+        </li>
+
+        <li>
+            PATCH:
+            Aplica parcialmente modificaciones a un recurso existente. Se utiliza para realizar actualizaciones
+            parciales en
+            lugar de reemplazar completamente un recurso.
+        </li>
+
+        <li>
+            DELETE:
+            Elimina un recurso específico en el servidor.
+        </li>
+
+    </ul>
+
+
 
 </body>
 
