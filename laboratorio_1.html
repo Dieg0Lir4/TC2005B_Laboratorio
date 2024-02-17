@@ -50,6 +50,7 @@
 
     <h3>¿Cuáles son las partes de un URL?</h3>
 
+    <!--en src se pone la ruta de la imagen y en alt una descripcion-->
     <img src="partes-url-ejemplos.png" alt="Partes de un URL">
 
     <p>
@@ -59,6 +60,7 @@
 
     <br>
 
+    <!--<ul> sirve para indicar que va a haber bullet points y <li> sirve para crear un nuevo bullet point-->
     <ul>
         <li>Protocolo: Indica el protocolo de comunicación utilizado para acceder al recurso</li>
         <li>Subdominio: Es una parte opcional que precede al dominio principal.</li>
@@ -117,7 +119,259 @@
 
     </ul>
 
+    <h3>
+        ¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y
+        contraseña en algún sitio? ¿Por qué?
+    </h3>
 
+    <p>
+        El metodo POST
+        <br>
+        Esto se debe a que el método POST oculta los datos del usuario en el cuerpo de la solicitud, ofreciendo mayor
+        seguridad, ya que la información no es visible en la barra de direcciones del navegador ni en el historial del
+        mismo. Además, el método POST no tiene las limitaciones de longitud de datos, lo que lo hace más apropiado para
+        el envío de formularios con cantidades significativas de información. Tambien usar el método POST indicanda que
+        se está realizando una acción que puede tener efectos en el servidor, como agregar o actualizar datos.
+    </p>
+
+
+    <h3>
+        ¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?
+    </h3>
+
+    <p>
+        Get
+        <br>
+        El método GET se utiliza para solicitar datos de un recurso específico, como una página web, desde un servidor.
+        Con el método GET, los datos que se envían al servidor se escriben en la misma dirección URL.
+    </p>
+
+    <h3>
+        Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?
+    </h3>
+
+    <p>
+        Cuando un servidor web devuelve una respuesta HTTP con el código 200, significa que la solicitud fue exitosa. La
+        solicitud del cliente ha sido recibida, comprendida y aceptada correctamente por el servidor, y este ha
+        respondido con la información solicitada.
+    </p>
+
+    <h3>
+        ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y
+        se encontró con un error 404? ¿Por qué?
+    </h3>
+
+    <p>
+        Es responsabilidad del desarrollador corregir un error 404 cuando un usuario lo reporta. Este código indica que
+        el recurso solicitado no se encuentra en el servidor. Resolver enlaces rotos mejora la experiencia del usuario y
+        contribuye al mantenimiento del sitio. La corrección oportuna es crucial para la reputación en SEO, mostrando al
+        sitio como confiable y mantenido.
+    </p>
+
+    <h3>
+        ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y
+        se encontró con un error 500? ¿Por qué?
+    </h3>
+
+    <p>
+        Sí, es responsabilidad del desarrollador corregir un error 500 en un sitio web cuando un usuario lo reporta. El
+        código de estado HTTP 500 indica un problema interno del servidor que afecta la experiencia del usuario y puede
+        deberse a fallos en el código o configuración.
+    </p>
+
+    <h3>
+        ¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de
+        HTML 4 que en HTML5 estén desaprobados.
+    </h3>
+
+    <p>
+        Cuando un atributo HTML5 está "depreciado" o "desaprobado", significa que aunque aún es compatible con los
+        navegadores, se considera obsoleto y se aconseja usar en su lugar alternativas más modernas.
+    </p>
+
+    <p>
+        Algunos elementos de HTML 4 que en HTML5 están desaprobados, porque se aconseja hacerlo en CSS incluyen:
+    <ul>
+        <!--<code> sirve para definir un bloque de código en línea. Este elemento indica al navegador que el 
+            texto contenido dentro de las etiquetas debe tratarse como código-->
+
+        <!-- &lt; representa el símbolo menor que (<) -->
+
+        <!-- &gt; representa el símbolo mayor que (>) -->
+
+        <!--Estas entidades se utilizan para evitar la interpretación incorrecta de los caracteres < y > 
+            como etiquetas HTML reales cuando se escriben dentro del contenido de una página web.-->
+        <li><code>&lt;font&gt;</code></li>
+        <li><code>&lt;center&gt;</code></li>
+        <li><code>&lt;strike&gt;</code></li>
+        <li><code>&lt;big&gt;</code></li>
+    </ul>
+    </p>
+
+    <h3>
+        ¿Cuáles son las diferencias principales entre HTML 4 y HTML5?
+    </h3>
+
+    <ul>
+        <li>Más elementos semánticos como <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>,
+            <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, entre otros.
+        </li>
+        <li>Soporte multimedia con <code>&lt;video&gt;</code> y <code>&lt;audio&gt;</code>.</li>
+        <li>Agregaron un lienzo para gráficos con <code>&lt;canvas&gt;</code>.</li>
+        <li>Mejoras en formularios, con campos para fecha, email, URL y número.</li>
+        <li>Capacidades de almacenamiento local mediante <code>localStorage</code> y <code>sessionStorage</code>.</li>
+        <li>API de geolocalización para ubicar a los usuarios por su posición geográfica.</li>
+        <li>Compatibilidad con dispositivos móviles: HTML5 está diseñado pensando en la adaptación a dispositivos
+            móviles.</li>
+    </ul>
+
+    <h3>¿Qué componentes de estructura y estilo tiene una tabla?</h3>
+
+    <h4>Componentes de Estructura de una Tabla:</h4>
+
+    <ul>
+        <li><code>&lt;table&gt;</code>: Elemento raíz que define la tabla.</li>
+        <li><code>&lt;tr&gt;</code> (table row): Define una fila en la tabla.</li>
+        <li><code>&lt;th&gt;</code> (table header cell): Define una celda de encabezado dentro de una fila. Se utiliza
+            para etiquetar columnas o filas.</li>
+        <li><code>&lt;td&gt;</code> (table data cell): Define una celda de datos dentro de una fila. Contiene el
+            contenido real de la tabla.</li>
+        <li><code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>: Estos elementos agrupan
+            secciones de la tabla. <code>&lt;thead&gt;</code> se utiliza para encabezados, <code>&lt;tbody&gt;</code>
+            para el cuerpo de la tabla, y <code>&lt;tfoot&gt;</code> para el pie de la tabla.</li>
+    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Encabezado 1 (&ltth>)</th>
+                <th>Encabezado 2 (&lt;th&gt;)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dato 1 (&lttd&gt)</td>
+                <td>Dato 2 (&lttd&gt)</td>
+            </tr>
+            <tr>
+                <td>Dato 3 (&lttd&gt)</td>
+                <td>Dato 4 (&lttd&gt)</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Pie 1 (&lttd&gt)</td>
+                <td>Pie 2 (&lttd&gt)</td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <h4>Componentes de Estilo de una Tabla:</h4>
+
+    <ul>
+        <li><code>border</code>: Controla el ancho del borde de la tabla.</li>
+        <li><code>cellpadding</code>: Establece el espacio interno de las celdas.</li>
+        <li><code>cellspacing</code>: Establece el espacio entre las celdas.</li>
+        <li><code>&lt;colgroup&gt;</code> y <code>&lt;col&gt;</code>: Estos elementos permiten aplicar estilos y
+            propiedades a columnas enteras.</li>
+    </ul>
+
+    <p>Codigo del estilo:</p>
+
+    &ltstyle><br>
+    table {<br>
+    border-collapse: collapse;<br>
+    width: 100%;<br>
+    }<br>
+    <br>
+    th,<br>
+    td {<br>
+    border: 1px solid black;<br>
+    padding: 8px;<br>
+    text-align: left;<br>
+    }<br>
+    <br>
+    colgroup {<br>
+    background-color: #f2f2f2;<br>
+    }<br>
+    </style>
+
+    <h3>¿Cuáles son los principales controles de una forma HTML5?</h3>
+
+    <input type="text">: Campo de texto para ingresar texto.<br>
+    <br>
+    <input type="password">: Campo de contraseña para ingresar contraseñas.<br>
+    <br>
+    <input type="email">: Campo de entrada de correo electrónico con validación automática.<br>
+    <br>
+    <input type="tel">: Campo de entrada de número de teléfono.<br>
+    <br>
+    <input type="number">: Campo de entrada de números con controles de incremento y decremento.<br>
+    <br>
+    <input type="checkbox">: Casilla de verificación para seleccionar opciones múltiples.<br>
+    <input type="checkbox">: Casilla de verificación para seleccionar opciones múltiples.<br>
+    <input type="checkbox">: Casilla de verificación para seleccionar opciones múltiples.<br>
+    <br>
+    <input type="radio" name="opciones">: Botón de opción para seleccionar una opción de un grupo.<br>
+    <input type="radio" name="opciones">: Botón de opción para seleccionar una opción de un grupo.<br>
+    <input type="radio" name="opciones">: Botón de opción para seleccionar una opción de un grupo.<br>
+    <br>
+    <select>
+        <option>: Menú desplegable con opciones seleccionables.</option> <br>
+    </select>
+    <br>
+    <textarea>: Área de texto de múltiples líneas para la entrada de texto extenso. </textarea><br>
+    <br>
+    <input type="file">: Botón para cargar archivos desde el sistema del usuario.<br>
+    <br>
+    <input type="submit"> y <input type="button">: Botones para enviar formularios o ejecutar scripts,
+    respectivamente.<br>
+    <br>
+    <input type="reset">: Botón para restablecer los valores del formulario a sus valores predeterminados.<br>
+    <br>
+    <input type="date">, <input type="time">, <input type="datetime-local">: Campos para seleccionar fechas y horas.<br>
+    <br>
+    <input type="color">: Selector de color.<br>
+
+    <h3>¿Qué tanto soporte HTML5 tiene el navegador que utilizas? Puedes utilizar la siguiente página para descubrirlo:
+        http://html5test.com/ (Al responder la pregunta recuerda poner el navegador que utilizas)
+    </h3>
+
+    <p>
+        581/594
+
+        Chrome 111 on macOS Catalina 10.15
+    </p>
+
+    <h3>¿Cuál es el ciclo de desarrollo de sistemas de información?</h3>
+
+    <ul>
+        <li>Planificación: Identificación de necesidades y elaboración de un plan.</li>
+
+        <li>Análisis: Recopilación y documentación de requisitos.</li>
+
+        <li>Diseño: Definición de la arquitectura y detalles técnicos.</li>
+
+        <li>Implementación: Desarrollo del software y pruebas unitarias.</li>
+
+        <li>Pruebas: Verificación del funcionamiento del sistema.</li>
+
+        <li>Mantenimiento: Uso diario y actualizaciones según sea necesario.</li>
+
+        <li>Retiro o Reemplazo: Retiro del sistema cuando sea necesario.</li>
+
+    </ul>
+
+    <h3>¿Cuál es el ciclo de vida de los sistemas de información?</h3>
+
+    <ul>
+        <li>Inicio</li>
+        <li>Planificación</li>
+        <li>Ejecución</li>
+        <li>Supervisión</li>
+        <li>Cierre</li>
+    </ul>
 
 </body>
 
