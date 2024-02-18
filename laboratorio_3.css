@@ -44,7 +44,7 @@ a:hover {
 /*Selector de pseudo-elementos*/
 p::first-letter {
     font-size: 40px;
-    border-left-color: aquamarine !important;
+    border-left-color: aquamarine;
     font-weight: bold;
     color: black;
 }
