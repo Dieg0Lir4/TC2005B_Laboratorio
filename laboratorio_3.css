@@ -16,6 +16,7 @@
 body {
     margin: 0 auto;
     max-width: 50em;
+    text-align: justify;
 }
 
 /*Selector de clase: . + nombre_de_la_clase */
@@ -26,29 +27,34 @@ body {
 }
 
 /*Selector de ID: # + nombre_del_ID */
-#preguntasHTML{
+#preguntasHTML {
     font-style: italic;
 }
 
 /*Selector de atributos: etiqueta[atributo]*/
-input[type="text"]{
+input[type="text"] {
     width: 200px;
 }
 
 /*Selector de pseudo-clases: etiqueta + : + estado*/
-a:hover{
-    color:greenyellow;
+a:hover {
+    color: greenyellow;
 }
 
 /*Selector de pseudo-elementos*/
-p::first-letter{
+p::first-letter {
     font-size: 40px;
-    border-left-color: aquamarine;
+    border-left-color: aquamarine !important;
     font-weight: bold;
     color: black;
 }
 
 /*Selector Combinado: etiqueta + etiqueta + ... + etiqueta*/
-nav a:hover{
+nav a:hover {
     color: rgb(255, 0, 0);
+}
+
+/*Libre experimentacion*/
+code {
+    background: #eee;
 }
