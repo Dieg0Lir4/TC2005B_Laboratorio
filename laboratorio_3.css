@@ -1,0 +1,55 @@
+/*
+ Este el archivo .css para progarmar, pero se recomendia 
+ una vez que termines hagas un archivo minimizado de este archivo
+ archivo.min.css, puedes usar herramientas en linea para que no lo 
+ minimizen, pero lo que hacen es dejar todo el codigo en un linea porque
+ asi no el archivo no tiene que mandar los espacios y enters
+ lo que esta bien porque al final son ignorados
+*/
+
+/*Selector Universal: * */
+* {
+    color: blue;
+}
+
+/*Selector Generico o de Tipo: nombre_de_la_etiqueta_en_html */
+body {
+    margin: 0 auto;
+    max-width: 50em;
+}
+
+/*Selector de clase: . + nombre_de_la_clase */
+.pregunta {
+    margin-top: 1em;
+    padding-top: 1em;
+    color: firebrick;
+}
+
+/*Selector de ID: # + nombre_del_ID */
+#preguntasHTML{
+    font-style: italic;
+}
+
+/*Selector de atributos: etiqueta[atributo]*/
+input[type="text"]{
+    width: 200px;
+}
+
+/*Selector de pseudo-clases: etiqueta + : + estado*/
+a:hover{
+    color:greenyellow;
+}
+
+/*Selector de pseudo-elementos*/
+p::first-letter{
+    font-size: 40px;
+    border-left-color: aquamarine;
+    font-weight: bold;
+    color: black;
+}
+
+/*Selector Combinado: etiqueta + etiqueta + ... + etiqueta*/
+nav a:hover{
+    color: rgb(255, 0, 0);
+}
+

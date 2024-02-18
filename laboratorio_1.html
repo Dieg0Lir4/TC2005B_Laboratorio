@@ -23,6 +23,28 @@
     <!--Para poder usar acentos jajaja-->
     <meta charset="UTF-8">
 
+    <!--Este es external level, usar un documento externo .css
+        para despues vincularlo y que pueda acceder a su contenido
+    
+        rel= Especifica la relación del recurso vinculado con el documento actual. 
+        En este caso, indica que el recurso es una hoja de estilo.
+
+        type= Especifica el tipo de medio del recurso vinculado. En este ejemplo, 
+        indica que se trata de una hoja de estilo en formato CSS.
+
+        href= Especifica la ubicación del archivo CSS externo que se va a vincular.
+    
+        -->
+    <link rel="stylesheet" type="text/css" href="laboratorio_3.css">
+
+    <!--Esta forma de estilo es document level, en el mismo documento .html
+        en la head pones el estilo dentro de las etiquetas <style> en el lenguaja css-->
+    <style>
+        body {
+            font-family: "Helvetica", "Arial", sans-serif;
+        }
+    </style>
+
 </head>
 
 
@@ -35,14 +57,21 @@
     <!-- <hr> crea una línea horizontal-->
     <hr>
     <h2>Diego Lira García</h2>
-    <h3>A01710369</h3>
-    <h3>a01710369@tec.mx</h3>
-    <h3>Ing. en Tecnologías Computacionales</h3>
+    <h3 class="pregunta">A01710369</h3>
+    <h3 class="pregunta">a01710369@tec.mx</h3>
+    <h3 class="pregunta">Ing. en Tecnologías Computacionales</h3>
     <hr>
 
-    <h1>Preguntas</h1>
+    <h2>Contenido:</h2>
 
-    <h3>¿Cuál es la diferencia entre Internet y la World Wide Web?</h3>
+    <nav>
+        <a href="#HTMLPRE">Preguntas sobre HTML</a>
+        <a href="#Referencias">Referencias</a>
+    </nav>
+
+    <h1 id="HTMLPRE">Preguntas de HTML</h1>
+
+    <h3 class="pregunta" id="preguntasHTML">¿Cuál es la diferencia entre Internet y la World Wide Web?</h3>
 
     <p>
         El internet es la conexión entre dispositivos, como computadoras
@@ -50,7 +79,7 @@
         Internet que permite a los usuarios acceder y transferir información.
     </p>
 
-    <h3>¿Cuáles son las partes de un URL?</h3>
+    <h3 class="pregunta" id="preguntasHTML">¿Cuáles son las partes de un URL?</h3>
 
     <!--en src se pone la ruta de la imagen y en alt una descripcion-->
     <img src="partes-url-ejemplos.png" alt="Partes de un URL">
@@ -64,6 +93,10 @@
 
     <!--<ul> sirve para indicar que va a haber bullet points y <li> sirve para crear un nuevo bullet point-->
     <ul>
+        <!--puedes poner el estilo en un linea de html, es inline level, pero es una mala practica
+            y para el laboratorio se no pidio no usarala pero asi luciria si la quisieras usar-->
+
+        <!--<li style="font-size:20pt; color:#&7863ff"> Ejemplo: Este es un ejemplo de como funciona inline level</li>-->
         <li>Protocolo: Indica el protocolo de comunicación utilizado para acceder al recurso</li>
         <li>Subdominio: Es una parte opcional que precede al dominio principal.</li>
         <li>Dominio: Es la dirección principal del recurso.</li>
@@ -78,7 +111,7 @@
         <li>indicar un fragmento específico dentro de la página web y se inicia con "#".</li>
     </ul>
 
-    <h3>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</h3>
+    <h3 class="pregunta" id="preguntasHTML">¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</h3>
 
     <ul>
         <li>
@@ -121,7 +154,7 @@
 
     </ul>
 
-    <h3>
+    <h3 class="pregunta" id="preguntasHTML">
         ¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y
         contraseña en algún sitio? ¿Por qué?
     </h3>
@@ -137,7 +170,7 @@
     </p>
 
 
-    <h3>
+    <h3 class="pregunta" id="preguntasHTML">
         ¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?
     </h3>
 
@@ -148,7 +181,7 @@
         Con el método GET, los datos que se envían al servidor se escriben en la misma dirección URL.
     </p>
 
-    <h3>
+    <h3 class="pregunta" id="preguntasHTML">
         Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?
     </h3>
 
@@ -158,7 +191,7 @@
         respondido con la información solicitada.
     </p>
 
-    <h3>
+    <h3 class="pregunta" id="preguntasHTML">
         ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y
         se encontró con un error 404? ¿Por qué?
     </h3>
@@ -170,7 +203,7 @@
         sitio como confiable y mantenido.
     </p>
 
-    <h3>
+    <h3 class="pregunta" id="preguntasHTML">
         ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y
         se encontró con un error 500? ¿Por qué?
     </h3>
@@ -181,7 +214,7 @@
         deberse a fallos en el código o configuración.
     </p>
 
-    <h3>
+    <h3 class="pregunta" id="preguntasHTML">
         ¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de
         HTML 4 que en HTML5 estén desaprobados.
     </h3>
@@ -210,7 +243,7 @@
     </ul>
     </p>
 
-    <h3>
+    <h3 class="pregunta" id="preguntasHTML">
         ¿Cuáles son las diferencias principales entre HTML 4 y HTML5?
     </h3>
 
@@ -227,7 +260,7 @@
             móviles.</li>
     </ul>
 
-    <h3>¿Qué componentes de estructura y estilo tiene una tabla?</h3>
+    <h3 class="pregunta" id="preguntasHTML">¿Qué componentes de estructura y estilo tiene una tabla?</h3>
 
     <h4>Componentes de Estructura de una Tabla:</h4>
 
@@ -299,7 +332,7 @@
     }<br>
     </style>
 
-    <h3>¿Cuáles son los principales controles de una forma HTML5?</h3>
+    <h3 class="pregunta" id="preguntasHTML">¿Cuáles son los principales controles de una forma HTML5?</h3>
 
     <input type="text">: Campo de texto para ingresar texto.<br>
     <br>
@@ -336,7 +369,8 @@
     <br>
     <input type="color">: Selector de color.<br>
 
-    <h3>¿Qué tanto soporte HTML5 tiene el navegador que utilizas? Puedes utilizar la siguiente página para descubrirlo:
+    <h3 class="pregunta" id="preguntasHTML">¿Qué tanto soporte HTML5 tiene el navegador que utilizas? Puedes utilizar la siguiente página
+        para descubrirlo:
         http://html5test.com/ (Al responder la pregunta recuerda poner el navegador que utilizas)
     </h3>
 
@@ -346,7 +380,7 @@
         Chrome 111 on macOS Catalina 10.15
     </p>
 
-    <h3>¿Cuál es el ciclo de desarrollo de sistemas de información?</h3>
+    <h3 class="pregunta" id="preguntasHTML">¿Cuál es el ciclo de desarrollo de sistemas de información?</h3>
 
     <ul>
         <li>Planificación: Identificación de necesidades y elaboración de un plan.</li>
@@ -365,7 +399,7 @@
 
     </ul>
 
-    <h3>¿Cuál es el ciclo de vida de los sistemas de información?</h3>
+    <h3 class="pregunta" id="preguntasHTML">¿Cuál es el ciclo de vida de los sistemas de información?</h3>
 
     <ul>
         <li>Inicio</li>
@@ -378,7 +412,7 @@
     <!--<footer> es una buena forma de seccionar la pagina-->
     <footer>
 
-        <h2>Referencias:</h2>
+        <h2 id="Referencias">Referencias:</h2>
 
 
         <!--<ol> es para que es numeren los elementos-->
