@@ -35,8 +35,9 @@
         href= Especifica la ubicación del archivo CSS externo que se va a vincular.
     
         -->
-    <link rel="stylesheet" type="text/css" href="laboratorio_3.min.css">
+    <link rel="stylesheet" type="text/css" href="css/laboratorio_3.min.css">
 
+   
     <!--Esta forma de estilo es document level, en el mismo documento .html
         en la head pones el estilo dentro de las etiquetas <style> en el lenguaja css-->
     <style>
@@ -44,6 +45,8 @@
             font-family: "Helvetica", "Arial", sans-serif;
         }
     </style>
+
+
 
 </head>
 
@@ -455,6 +458,24 @@
 
     </div>
 
+    <h1>Javascript</h1>
+
+    <h3>Hacer una tabla</h3>
+    <button id="tablaDeCuadrados">Hacer tabla</button>
+
+    <h3>Pregunta de suma</h3>
+    <button id="sumaBoton">Hacer suma</button>
+
+    <h3>Contador de numeros</h3>
+    <form id="formsconta">
+        <label for="inputconta">Ingresa el arreglo (separado por comas):</label>
+        <input type="text" id="inputconta" required>
+        <button type="button" onclick="contarArreglo()">Contar</button>
+    </form>
+
+    <h3>Promedio de matriz</h3>
+    <button type="button" onclick="promediarArreglo()">Promedio</button>
+
 
 
     <!--<footer> es una buena forma de seccionar la pagina-->
@@ -555,6 +576,10 @@
         <p>Editor usado: <a href="https://code.visualstudio.com/">Visual Studio Code</a></p>
 
     </footer>
+
+     <!--usa <script> en type va text/javascript y en el src el path a el archivo js-->
+        <script type="text/javascript" src="js/laboratorio_4.js"></script>
+
 </body>
 
 </html>
