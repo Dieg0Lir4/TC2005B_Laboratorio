@@ -470,11 +470,16 @@
     <form id="formsconta">
         <label for="inputconta">Ingresa el arreglo (separado por comas):</label>
         <input type="text" id="inputconta" required>
+        <!--mala practica usar onclick, porque mezclas estructura html con el comportamiento (javascript)-->
         <button type="button" onclick="contarArreglo()">Contar</button>
     </form>
 
     <h3>Promedio de matriz</h3>
-    <button type="button" onclick="promediarArreglo()">Promedio</button>
+    <button type="button" onclick="promediarArreglo()" id="media">Promedio</button>
+
+    <h3>Inveritr numeros</h3>
+    <input text="number" id="cadena">
+    <button type="button" id="butoncadena">Invertir</button>
 
 
 
