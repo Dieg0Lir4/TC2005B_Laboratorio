@@ -37,7 +37,7 @@
         -->
     <link rel="stylesheet" type="text/css" href="css/laboratorio_3.min.css">
 
-   
+
     <!--Esta forma de estilo es document level, en el mismo documento .html
         en la head pones el estilo dentro de las etiquetas <style> en el lenguaja css-->
     <style>
@@ -440,7 +440,8 @@
         </h3>
 
         <p>
-            Al elegir unidades de estilo en CSS, como %, px, o pt, se recomienda utilizar % para propiedades relativas al
+            Al elegir unidades de estilo en CSS, como %, px, o pt, se recomienda utilizar % para propiedades relativas
+            al
             contenedor principal en diseño responsivo, px para tamaños fijos cuando sea necesario, y pt para tamaños de
             fuente en contextos de impresión. La elección dependerá del contexto y los requisitos del diseño,
             considerando la escalabilidad y adaptabilidad del diseño en diferentes dispositivos.
@@ -482,6 +483,15 @@
     <button type="button" id="butoncadena">Invertir</button>
 
 
+    <h3>Administrador de tarea</h3>
+
+    <form id="formsTarea">
+        <label for="inputTarea">Ingresa la tarea:</label>
+        <input type="text" id="inputTarea" required>
+        <button type="button" id="butonTarea">Agregar</button>
+    </form>
+
+    <ul id="listaTareas"></ul>
 
     <!--<footer> es una buena forma de seccionar la pagina-->
     <footer>
@@ -582,8 +592,8 @@
 
     </footer>
 
-     <!--usa <script> en type va text/javascript y en el src el path a el archivo js-->
-        <script type="text/javascript" src="js/laboratorio_4.js"></script>
+    <!--usa <script> en type va text/javascript y en el src el path a el archivo js-->
+    <script type="text/javascript" src="js/laboratorio_4.js"></script>
 
 </body>
 

@@ -145,3 +145,38 @@ boton_de_invertir.addEventListener("click", () => {
     const invertida = cadena.split("").reverse().join("");
     document.getElementById("cadena").value = invertida;
 });
+
+class Tarea {
+    constructor(nombre, estado){
+        this.nombre = nombre;
+        this.estado = estado;
+    }
+
+    toggleEstado() {
+        this.estado = this.estado === 'completo' ? 'incompleto' : 'completo';
+    }
+}
+
+const botonEvento = document.getElementById("butonTarea");
+
+botonEvento.addEventListener("click", () => {
+
+    const inputTarea = document.getElementById("inputTarea");
+    const listaTareas = document.getElementById("listaTareas");
+
+    const nombreTarea = inputTarea.value;
+    const nuevaTarea = new Tarea(nombreTarea, 'incompleto'); 
+
+    const elementoLista = document.createElement('li');
+    elementoLista.textContent = `${nuevaTarea.nombre} - ${nuevaTarea.estado}`;
+
+    elementoLista.addEventListener('click', () => {
+        nuevaTarea.toggleEstado();
+        elementoLista.textContent = `${nuevaTarea.nombre} - ${nuevaTarea.estado}`;
+    });
+
+    listaTareas.appendChild(elementoLista);
+
+    inputTarea.value = '';
+
+});
