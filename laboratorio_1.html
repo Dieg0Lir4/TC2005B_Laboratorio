@@ -493,6 +493,117 @@
 
     <ul id="listaTareas"></ul>
 
+    <h3>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h3>
+    <p>
+        Java y JavaScript son dos lenguajes de programación populares, pero son bastante diferentes en términos de
+        sintaxis, uso y características. Java es un lenguaje de programación de propósito general que se utiliza para
+        desarrollar aplicaciones de escritorio, aplicaciones web del lado del servidor, y aplicaciones para Android.
+        JavaScript, por otro lado, se utiliza principalmente en el desarrollo web del lado del cliente para hacer
+        páginas web interactivas. Sin embargo, con la llegada de Node.js, JavaScript también se puede usar para el
+        desarrollo del lado del servidor.
+    </p>
+    <p>
+        Java es un lenguaje de programación de tipado estático, lo que significa que debes declarar el tipo de una
+        variable cuando la creas y no puedes cambiar su tipo más tarde. JavaScript es un lenguaje de tipado dinámico, lo
+        que significa que no necesitas declarar el tipo de una variable cuando la creas y puedes cambiar su tipo más
+        tarde.
+    </p>
+    <p>
+        Java se compila en bytecode que luego se ejecuta en la Máquina Virtual de Java (JVM). JavaScript se interpreta
+        en el navegador, aunque los navegadores modernos utilizan compiladores JIT para mejorar el rendimiento.
+    </p>
+    <p>
+        Ambos lenguajes tienen una sintaxis que es en cierta medida similar a C y C++, con estructuras de control como
+        if-else, switch, for, while, etc. Tanto Java como JavaScript soportan la programación orientada a objetos. Sin
+        embargo, Java utiliza un modelo de clases, mientras que JavaScript utiliza un modelo basado en prototipos.
+    </p>
+    <p>
+        Ambos son lenguajes de programación muy populares y ampliamente utilizados con grandes comunidades de
+        desarrolladores y una gran cantidad de recursos de aprendizaje disponibles.
+    </p>
+    <p>
+        Es importante recordar que a pesar de las similitudes en sus nombres, Java y JavaScript son lenguajes de
+        programación muy diferentes y no están directamente relacionados entre sí. Hay un meme que dice que Java es a
+        Javascript como Ham es a Hamster.
+    </p>
+
+    <h3>¿Qué métodos tiene el objeto Date? (Menciona al menos 5*)</h3>
+    <ul>
+        <li><strong>getDate():</strong> Este método devuelve el día del mes (de 1 a 31) para la fecha especificada.</li>
+        <li><strong>getMonth():</strong> Este método devuelve el mes (de 0 a 11) para la fecha especificada, según la
+            hora local. 0 corresponde a enero, 1 a febrero, y así sucesivamente.</li>
+        <li><strong>getFullYear():</strong> Este método devuelve el año de la fecha especificada, según la hora local.
+        </li>
+        <li><strong>getHours():</strong> Este método devuelve la hora (de 0 a 23) de la fecha y hora especificadas.</li>
+        <li><strong>getMinutes():</strong> Este método devuelve los minutos (de 0 a 59) de la fecha y hora
+            especificadas.</li>
+    </ul>
+
+    <h4>Ejemplo de uso:</h4>
+    <pre><code>
+        let fecha = new Date();
+
+        console.log(fecha.getDate());      // Devuelve el día del mes
+        console.log(fecha.getMonth());     // Devuelve el mes
+        console.log(fecha.getFullYear());  // Devuelve el año
+        console.log(fecha.getHours());     // Devuelve la hora
+        console.log(fecha.getMinutes());   // Devuelve los minutos
+</code></pre>
+
+    <h3>¿Qué métodos tienen los arreglos? (Menciona al menos 5*)</h3>
+    <ul>
+        <li><strong>push():</strong> Este método agrega uno o más elementos al final de un arreglo y devuelve la nueva
+            longitud del arreglo.</li>
+        <li><strong>pop():</strong> Este método elimina el último elemento de un arreglo y lo devuelve.</li>
+        <li><strong>shift():</strong> Este método elimina el primer elemento de un arreglo y lo devuelve.</li>
+        <li><strong>unshift():</strong> Este método agrega uno o más elementos al inicio de un arreglo y devuelve la
+            nueva longitud del arreglo.</li>
+        <li><strong>splice():</strong> Este método cambia el contenido de un arreglo eliminando, reemplazando o
+            agregando elementos.</li>
+    </ul>
+
+    <h4>Ejemplo de uso:</h4>
+    <pre><code>
+let arr = [1, 2, 3, 4, 5];
+
+arr.push(6);        // Agrega el número 6 al final del arreglo
+arr.pop();          // Elimina el último elemento del arreglo
+arr.shift();        // Elimina el primer elemento del arreglo
+arr.unshift(0);     // Agrega el número 0 al inicio del arreglo
+arr.splice(2, 1);   // Elimina 1 elemento desde el índice 2
+
+console.log(arr);   // Muestra el arreglo modificado
+</code></pre>
+
+    <h3>¿Cómo se declara una variable con alcance local dentro de una función?</h3>
+    <p>
+        En JavaScript, puedes declarar una variable con alcance local dentro de una función utilizando las palabras
+        clave <code>var</code>, <code>let</code> o <code>const</code>. Ejemplazo:
+    </p>
+    <pre><code>
+function miFuncion() {
+  let variableLocal = "Soy local";
+  console.log(variableLocal);
+}
+
+miFuncion(); // Imprime: "Soy local"
+console.log(variableLocal); // Error: variableLocal is not defined
+</code></pre>
+    <p>
+        En este ejemplo, <code>variableLocal</code> es una variable con alcance local a la función
+        <code>miFuncion</code>. Esto significa que solo se puede acceder a <code>variableLocal</code> dentro de
+        <code>miFuncion</code>. Si intentas acceder a <code>variableLocal</code> fuera de <code>miFuncion</code>,
+        obtendrás un error porque <code>variableLocal</code> no está definida en ese alcance.
+    </p>
+
+    <h3>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h3>
+<ul>
+    <li><strong>Acoplamiento de código:</strong> Si una función depende de una variable global, se vuelve menos flexible y más difícil de reutilizar en diferentes contextos, ya que está acoplada a esa variable global.</li>
+    <li><strong>Riesgo de colisiones de nombres:</strong> Si tienes muchas variables globales, puedes terminar accidentalmente reutilizando un nombre de variable, lo que puede llevar a comportamientos inesperados en tu código.</li>
+    <li><strong>Dificultad para rastrear y depurar el código:</strong> Las variables globales pueden ser modificadas desde cualquier lugar en tu código, lo que puede hacer que sea más difícil rastrear y depurar problemas.</li>
+    <li><strong>Riesgo de mutación no intencionada:</strong> Si una función modifica una variable global, puede afectar a otras funciones que también dependen de esa variable global, lo que puede llevar a comportamientos inesperados.</li>
+</ul>
+
     <!--<footer> es una buena forma de seccionar la pagina-->
     <footer>
 
