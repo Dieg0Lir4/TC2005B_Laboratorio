@@ -69,6 +69,7 @@ document.getElementById("confirmPassword").addEventListener("input", () => {
     document.getElementById("puerta").classList.add("border-lime-400");
   }else{
     document.getElementById("respuesta").innerHTML = "La contraseña no es valida";
+    document.getElementById("respuesta").classList.add("text-red-400");
     document.getElementById("puerta").src = "./puertaCerrada.png";
     document.getElementById("puerta").classList.remove("border-lime-400");
     document.getElementById("puerta").classList.add("border-red-400");
