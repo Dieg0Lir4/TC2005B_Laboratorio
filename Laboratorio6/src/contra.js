@@ -1,5 +1,6 @@
+var valida = false;
+
 document.getElementById("password").addEventListener("input", () => {
-  var valida = false;
 
   let pass = document.getElementById("password").value;
 
@@ -60,8 +61,8 @@ document.getElementById("password").addEventListener("blur", () => {
 
 document.getElementById("confirmPassword").addEventListener("input", () => {
   if (
-    document.getElementById("password").value ===
-    document.getElementById("confirmPassword").value
+    (document.getElementById("password").value ===
+    document.getElementById("confirmPassword").value) && valida
   ) {
     document.getElementById("respuesta").innerHTML = "La contraseña es valida";
     document.getElementById("puerta").src = "./puertaAbierta.png";
