@@ -64,719 +64,731 @@ function bubbleSort(arreglo) {
 const http = require("http");
 
 const server = http.createServer((request, response) => {
+  const ip = request.connection.remoteAddress;
+  console.log("La dirección IP del cliente es: " + ip);
+
   console.log(request.url);
-  
-  response.setHeader("Content-Type", "text/html");
-  response.write(`<!-- Para especificar la versionde html que esta utilizando esta pagina-->
-  <!DOCTYPE html>
-  
-  <!-- La etiqueta <html> se utiliza para definir un documento HTML
-       (define el inicio y fin de la pgaina).-->
-  
-  <!-- El atributo lang en la etiqueta <html> se utiliza
-       para declarar el idioma del documento HTML. 
-       En este caso, lang="es" indica que el idioma del 
-       documento es español.-->
-  <html lang="es">
-  
-  <!-- La etiqueta <head> en HTML se utiliza para contener
-      metadatos (datos sobre los datos) del documento HTML.
-      Los metadatos no se muestran en la página web, pero
-      son útiles para los navegadores, motores de búsqueda y otras aplicaciones web.-->
-  
-  <head>
-  
-      <!--Define el título del documento, que se muestra en la barra
-          de título del navegador o en la pestaña del navegador.-->
-      <title> Mi pagina web</title>
-      <!--Para poder usar acentos jajaja-->
-      <meta charset="UTF-8">
-  
-      <!--Este es external level, usar un documento externo .css
-          para despues vincularlo y que pueda acceder a su contenido
-      
-          rel= Especifica la relación del recurso vinculado con el documento actual. 
-          En este caso, indica que el recurso es una hoja de estilo.
-  
-          type= Especifica el tipo de medio del recurso vinculado. En este ejemplo, 
-          indica que se trata de una hoja de estilo en formato CSS.
-  
-          href= Especifica la ubicación del archivo CSS externo que se va a vincular.
-      
-          -->
-      
-  
-  
-      <!--Esta forma de estilo es document level, en el mismo documento .html
-          en la head pones el estilo dentro de las etiquetas <style> en el lenguaja css-->
-      <style>
-      *{color:#00f}body{margin:0 auto;max-width:50em;text-align:justify}.pregunta{margin-top:1em;padding-top:1em;color:#b22222}#preguntasHTML{font-style:italic}input[type=text]{width:200px}a:hover{color:#adff2f}p::first-letter{font-size:40px;border-left-color:#7fffd4;font-weight:700;color:#000}nav a:hover{color:red}code{background:#eee}
-      </style>
-  
-  
-  
-  </head>
-  
-  
-  <!-- La etiqueta <body> en HTML se utiliza para definir el cuerpo
-      del documento HTML, es decir, todo el contenido visible de la página web.-->
-  
-  <body>
-      <!--<h#> Define los encabezados, mientras menor el numero más grande el titulo (del 1 al 6).-->
-      <h1>Mi pagina web</h1>
-      <!-- <hr> crea una línea horizontal-->
-      <hr>
-      <h2>Diego Lira García</h2>
-      <h3 class="pregunta">A01710369</h3>
-      <h3 class="pregunta">a01710369@tec.mx</h3>
-      <h3 class="pregunta">Ing. en Tecnologías Computacionales</h3>
-      <hr>
-  
-      <h2>Contenido:</h2>
-  
-      <nav>
-          <a href="#HTMLPRE">Preguntas sobre HTML</a>
-          <a href="#CSSPRE">Preguntas sobre CSS</a>
-          <a href="#Referencias">Referencias</a>
-      </nav>
-  
-      <h1 id="HTMLPRE">Preguntas de HTML</h1>
-  
-      <h3 class="pregunta" id="preguntasHTML">¿Cuál es la diferencia entre Internet y la World Wide Web?</h3>
-  
-      <p>
-          El internet es la conexión entre dispositivos, como computadoras
-          o teléfonos celulares a nivel mundial. Mientras que World Wide Web es un sistema de información en el
-          Internet que permite a los usuarios acceder y transferir información.
-      </p>
-  
-      <h3 class="pregunta" id="preguntasHTML">¿Cuáles son las partes de un URL?</h3>
-  
-      <!--en src se pone la ruta de la imagen y en alt una descripcion-->
-      <img src="partes-url-ejemplos.png" alt="Partes de un URL">
-  
-      <p>
-          Pukocz, E. (2019, November 3). Partes de una URL con ejemplos y explicación fácil. Edyta Pukocz.
-          https://edytapukocz.com/url-partes-ejemplos-facil/
-      </p>
-  
-      <br>
-  
-      <!--<ul> sirve para indicar que va a haber bullet points y <li> sirve para crear un nuevo bullet point-->
-      <ul>
-          <!--puedes poner el estilo en un linea de html, es inline level, pero es una mala practica
-              y para el laboratorio se no pidio no usarala pero asi luciria si la quisieras usar-->
-  
-          <!--<li style="font-size:20pt; color:#&7863ff"> Ejemplo: Este es un ejemplo de como funciona inline level</li>-->
-          <li>Protocolo: Indica el protocolo de comunicación utilizado para acceder al recurso</li>
-          <li>Subdominio: Es una parte opcional que precede al dominio principal.</li>
-          <li>Dominio: Es la dirección principal del recurso.</li>
-          <li>TLD (Top-Level Domain): Es la parte final del dominio y generalmente indica la naturaleza del sitio o su
-              origen</li>
-          <li>geográfico. Ejemplos comunes incluyen ".com", ".org", ".net", ".es", etc.</li>
-          <li>Ruta: Indica la ubicación específica del recurso en el servidor.</li>
-          <li>Parámetro: Se utiliza para enviar información adicional al servidor. Puede contener múltiples pares</li>
-          <li>(clave=valor) separados por "&" y viene despues de “?”</li>
-          <li>Etiqueta: La "etiqueta" no es una parte estándar de un URL. Puede referirse al fragmento, que se utiliza
-              para</li>
-          <li>indicar un fragmento específico dentro de la página web y se inicia con "#".</li>
-      </ul>
-  
-      <h3 class="pregunta" id="preguntasHTML">¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH,
-          DELETE?</h3>
-  
-      <ul>
-          <li>
-              GET:
-              Solicita datos de un recurso específico. Los parámetros se envían a través de la URL. No debe modificar el
-              estado del servidor.
-          </li>
-  
-          <li>
-              HEAD:
-              Solicita únicamente los encabezados del recurso, sin el cuerpo de la respuesta. Se utiliza para obtener
-              información sobre el recurso, como su tamaño o fecha de modificación, sin descargar el contenido completo.
-          </li>
-  
-          <li>
-              POST:
-              Envía datos al servidor para ser procesados y puede crear un nuevo recurso. Los datos se envían en el cuerpo
-              del
-              mensaje. Puede modificar el estado del servidor.
-          </li>
-  
-          <li>
-              PUT:
-              Actualiza o crea un recurso específico en el servidor. Similar a POST, pero se utiliza para actualizar
-              recursos
-              en ubicaciones específicas.
-          </li>
-  
-          <li>
-              PATCH:
-              Aplica parcialmente modificaciones a un recurso existente. Se utiliza para realizar actualizaciones
-              parciales en
-              lugar de reemplazar completamente un recurso.
-          </li>
-  
-          <li>
-              DELETE:
-              Elimina un recurso específico en el servidor.
-          </li>
-  
-      </ul>
-  
-      <h3 class="pregunta" id="preguntasHTML">
-          ¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y
-          contraseña en algún sitio? ¿Por qué?
-      </h3>
-  
-      <p>
-          El metodo POST
-          <br>
-          Esto se debe a que el método POST oculta los datos del usuario en el cuerpo de la solicitud, ofreciendo mayor
-          seguridad, ya que la información no es visible en la barra de direcciones del navegador ni en el historial del
-          mismo. Además, el método POST no tiene las limitaciones de longitud de datos, lo que lo hace más apropiado para
-          el envío de formularios con cantidades significativas de información. Tambien usar el método POST indicanda que
-          se está realizando una acción que puede tener efectos en el servidor, como agregar o actualizar datos.
-      </p>
-  
-  
-      <h3 class="pregunta" id="preguntasHTML">
-          ¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?
-      </h3>
-  
-      <p>
-          Get
-          <br>
-          El método GET se utiliza para solicitar datos de un recurso específico, como una página web, desde un servidor.
-          Con el método GET, los datos que se envían al servidor se escriben en la misma dirección URL.
-      </p>
-  
-      <h3 class="pregunta" id="preguntasHTML">
-          Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?
-      </h3>
-  
-      <p>
-          Cuando un servidor web devuelve una respuesta HTTP con el código 200, significa que la solicitud fue exitosa. La
-          solicitud del cliente ha sido recibida, comprendida y aceptada correctamente por el servidor, y este ha
-          respondido con la información solicitada.
-      </p>
-  
-      <h3 class="pregunta" id="preguntasHTML">
-          ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y
-          se encontró con un error 404? ¿Por qué?
-      </h3>
-  
-      <p>
-          Es responsabilidad del desarrollador corregir un error 404 cuando un usuario lo reporta. Este código indica que
-          el recurso solicitado no se encuentra en el servidor. Resolver enlaces rotos mejora la experiencia del usuario y
-          contribuye al mantenimiento del sitio. La corrección oportuna es crucial para la reputación en SEO, mostrando al
-          sitio como confiable y mantenido.
-      </p>
-  
-      <h3 class="pregunta" id="preguntasHTML">
-          ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y
-          se encontró con un error 500? ¿Por qué?
-      </h3>
-  
-      <p>
-          Sí, es responsabilidad del desarrollador corregir un error 500 en un sitio web cuando un usuario lo reporta. El
-          código de estado HTTP 500 indica un problema interno del servidor que afecta la experiencia del usuario y puede
-          deberse a fallos en el código o configuración.
-      </p>
-  
-      <h3 class="pregunta" id="preguntasHTML">
-          ¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de
-          HTML 4 que en HTML5 estén desaprobados.
-      </h3>
-  
-      <p>
-          Cuando un atributo HTML5 está "depreciado" o "desaprobado", significa que aunque aún es compatible con los
-          navegadores, se considera obsoleto y se aconseja usar en su lugar alternativas más modernas.
-      </p>
-  
-      <p>
-          Algunos elementos de HTML 4 que en HTML5 están desaprobados, porque se aconseja hacerlo en CSS incluyen:
-      <ul>
-          <!--<code> sirve para definir un bloque de código en línea. Este elemento indica al navegador que el 
-              texto contenido dentro de las etiquetas debe tratarse como código-->
-  
-          <!-- &lt; representa el símbolo menor que (<) -->
-  
-          <!-- &gt; representa el símbolo mayor que (>) -->
-  
-          <!--Estas entidades se utilizan para evitar la interpretación incorrecta de los caracteres < y > 
-              como etiquetas HTML reales cuando se escriben dentro del contenido de una página web.-->
-          <li><code>&lt;font&gt;</code></li>
-          <li><code>&lt;center&gt;</code></li>
-          <li><code>&lt;strike&gt;</code></li>
-          <li><code>&lt;big&gt;</code></li>
-      </ul>
-      </p>
-  
-      <h3 class="pregunta" id="preguntasHTML">
-          ¿Cuáles son las diferencias principales entre HTML 4 y HTML5?
-      </h3>
-  
-      <ul>
-          <li>Más elementos semánticos como <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>,
-              <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, entre otros.
-          </li>
-          <li>Soporte multimedia con <code>&lt;video&gt;</code> y <code>&lt;audio&gt;</code>.</li>
-          <li>Agregaron un lienzo para gráficos con <code>&lt;canvas&gt;</code>.</li>
-          <li>Mejoras en formularios, con campos para fecha, email, URL y número.</li>
-          <li>Capacidades de almacenamiento local mediante <code>localStorage</code> y <code>sessionStorage</code>.</li>
-          <li>API de geolocalización para ubicar a los usuarios por su posición geográfica.</li>
-          <li>Compatibilidad con dispositivos móviles: HTML5 está diseñado pensando en la adaptación a dispositivos
-              móviles.</li>
-      </ul>
-  
-      <h3 class="pregunta" id="preguntasHTML">¿Qué componentes de estructura y estilo tiene una tabla?</h3>
-  
-      <h4>Componentes de Estructura de una Tabla:</h4>
-  
-      <ul>
-          <li><code>&lt;table&gt;</code>: Elemento raíz que define la tabla.</li>
-          <li><code>&lt;tr&gt;</code> (table row): Define una fila en la tabla.</li>
-          <li><code>&lt;th&gt;</code> (table header cell): Define una celda de encabezado dentro de una fila. Se utiliza
-              para etiquetar columnas o filas.</li>
-          <li><code>&lt;td&gt;</code> (table data cell): Define una celda de datos dentro de una fila. Contiene el
-              contenido real de la tabla.</li>
-          <li><code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>: Estos elementos agrupan
-              secciones de la tabla. <code>&lt;thead&gt;</code> se utiliza para encabezados, <code>&lt;tbody&gt;</code>
-              para el cuerpo de la tabla, y <code>&lt;tfoot&gt;</code> para el pie de la tabla.</li>
-      </ul>
-  
-      <table>
-          <thead>
-              <tr>
-                  <th>Encabezado 1 (&ltth>)</th>
-                  <th>Encabezado 2 (&lt;th&gt;)</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>Dato 1 (&lttd&gt)</td>
-                  <td>Dato 2 (&lttd&gt)</td>
-              </tr>
-              <tr>
-                  <td>Dato 3 (&lttd&gt)</td>
-                  <td>Dato 4 (&lttd&gt)</td>
-              </tr>
-          </tbody>
-          <tfoot>
-              <tr>
-                  <td>Pie 1 (&lttd&gt)</td>
-                  <td>Pie 2 (&lttd&gt)</td>
-              </tr>
-          </tfoot>
-      </table>
-  
-  
-      <h4>Componentes de Estilo de una Tabla:</h4>
-  
-      <ul>
-          <li><code>border</code>: Controla el ancho del borde de la tabla.</li>
-          <li><code>cellpadding</code>: Establece el espacio interno de las celdas.</li>
-          <li><code>cellspacing</code>: Establece el espacio entre las celdas.</li>
-          <li><code>&lt;colgroup&gt;</code> y <code>&lt;col&gt;</code>: Estos elementos permiten aplicar estilos y
-              propiedades a columnas enteras.</li>
-      </ul>
-  
-      <p>Codigo del estilo:</p>
-      <code>
-  
-          &ltstyle><br>
-              table {<br>
-                  border-collapse: collapse;<br>
-                  width: 100%;<br>
-              }<br>
-              <br>
-              th,<br>
-              td {<br>
-                  border: 1px solid black;<br>
-                  padding: 8px;<br>
-                  text-align: left;<br>
-              }<br>
-              <br>
-              colgroup {<br>
-                  background-color: #f2f2f2;<br>
-              }<br>
-          </style>
-      </code>
-  
-      <h3 class="pregunta" id="preguntasHTML">¿Cuáles son los principales controles de una forma HTML5?</h3>
-  
-      <input type="text">: Campo de texto para ingresar texto.<br>
-      <br>
-      <input type="password">: Campo de contraseña para ingresar contraseñas.<br>
-      <br>
-      <input type="email">: Campo de entrada de correo electrónico con validación automática.<br>
-      <br>
-      <input type="tel">: Campo de entrada de número de teléfono.<br>
-      <br>
-      <input type="number">: Campo de entrada de números con controles de incremento y decremento.<br>
-      <br>
-      <input type="checkbox">: Casilla de verificación para seleccionar opciones múltiples.<br>
-      <input type="checkbox">: Casilla de verificación para seleccionar opciones múltiples.<br>
-      <input type="checkbox">: Casilla de verificación para seleccionar opciones múltiples.<br>
-      <br>
-      <input type="radio" name="opciones">: Botón de opción para seleccionar una opción de un grupo.<br>
-      <input type="radio" name="opciones">: Botón de opción para seleccionar una opción de un grupo.<br>
-      <input type="radio" name="opciones">: Botón de opción para seleccionar una opción de un grupo.<br>
-      <br>
-      <select>
-          <option>: Menú desplegable con opciones seleccionables.</option> <br>
-      </select>
-      <br>
-      <textarea>: Área de texto de múltiples líneas para la entrada de texto extenso. </textarea><br>
-      <br>
-      <input type="file">: Botón para cargar archivos desde el sistema del usuario.<br>
-      <br>
-      <input type="submit"> y <input type="button">: Botones para enviar formularios o ejecutar scripts,
-      respectivamente.<br>
-      <br>
-      <input type="reset">: Botón para restablecer los valores del formulario a sus valores predeterminados.<br>
-      <br>
-      <input type="date">, <input type="time">, <input type="datetime-local">: Campos para seleccionar fechas y horas.<br>
-      <br>
-      <input type="color">: Selector de color.<br>
-  
-      <h3 class="pregunta" id="preguntasHTML">¿Qué tanto soporte HTML5 tiene el navegador que utilizas? Puedes utilizar la
-          siguiente página
-          para descubrirlo:
-          http://html5test.com/ (Al responder la pregunta recuerda poner el navegador que utilizas)
-      </h3>
-  
-      <p>
-          581/594
-  
-          Chrome 111 on macOS Catalina 10.15
-      </p>
-  
-      <h3 class="pregunta" id="preguntasHTML">¿Cuál es el ciclo de desarrollo de sistemas de información?</h3>
-  
-      <ul>
-          <li>Planificación: Identificación de necesidades y elaboración de un plan.</li>
-  
-          <li>Análisis: Recopilación y documentación de requisitos.</li>
-  
-          <li>Diseño: Definición de la arquitectura y detalles técnicos.</li>
-  
-          <li>Implementación: Desarrollo del software y pruebas unitarias.</li>
-  
-          <li>Pruebas: Verificación del funcionamiento del sistema.</li>
-  
-          <li>Mantenimiento: Uso diario y actualizaciones según sea necesario.</li>
-  
-          <li>Retiro o Reemplazo: Retiro del sistema cuando sea necesario.</li>
-  
-      </ul>
-  
-      <h3 class="pregunta" id="preguntasHTML">¿Cuál es el ciclo de vida de los sistemas de información?</h3>
-  
-      <ul>
-          <li>Inicio</li>
-          <li>Planificación</li>
-          <li>Ejecución</li>
-          <li>Supervisión</li>
-          <li>Cierre</li>
-      </ul>
-  
-      <div class="pregunta">
-          <h1 id="CSSPRE">Pregunta de CSS</h1>
-  
-          <h3>clas ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS?</h3>
-  
-          <p>!important es una declaración en CSS que se utiliza para darle prioridad a una regla de estilo específica.
-              !important puede ser una herramienta útil en circunstancias específicas, pero su uso debe ser cuidadoso y
-              justificado. Priorizar la claridad, la especificidad y la comprensión del flujo de la cascada de estilos en
-              CSS contribuirá a un código más mantenible y fácil de trabajar a largo plazo.</p>
-  
-          <h3>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?</h3>
-  
-          <p>
-              Debe considerarse el contraste, la carga rápida de la página y cómo la imagen se integra con el diseño
-              general. Una mala elección puede afectar negativamente la experiencia del usuario y la estética de la
-              página.
-          </p>
-  
-          <h3>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre
-              %, px y pt?
-          </h3>
-  
-          <p>
-              Al elegir unidades de estilo en CSS, como %, px, o pt, se recomienda utilizar % para propiedades relativas
-              al
-              contenedor principal en diseño responsivo, px para tamaños fijos cuando sea necesario, y pt para tamaños de
-              fuente en contextos de impresión. La elección dependerá del contexto y los requisitos del diseño,
-              considerando la escalabilidad y adaptabilidad del diseño en diferentes dispositivos.
-          </p>
-  
-          <h3>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</h3>
-  
-          <p>
-              El uso de una versión minimizada del CSS mejora el rendimiento del sitio al reducir el tamaño del archivo al
-              eliminar comentarios, espacios en blanco y caracteres no esenciales. Esto resulta en tiempos de carga más
-              rápidos, especialmente en conexiones de red más lentas, al disminuir el tiempo de transferencia de datos
-              desde el servidor al navegador.
-          </p>
-  
-  
-      </div>
-  
-      <h1>Javascript</h1>
-  
-      <h3>Hacer una tabla</h3>
-      <button id="tablaDeCuadrados">Hacer tabla</button>
-  
-      <h3>Pregunta de suma</h3>
-      <button id="sumaBoton">Hacer suma</button>
-  
-      <h3>Contador de numeros</h3>
-      <form id="formsconta">
-          <label for="inputconta">Ingresa el arreglo (separado por comas):</label>
-          <input type="text" id="inputconta" required>
-          <!--mala practica usar onclick, porque mezclas estructura html con el comportamiento (javascript)-->
-          <button type="button" onclick="contarArreglo()">Contar</button>
-      </form>
-  
-      <h3>Promedio de matriz</h3>
-      <button type="button" onclick="promediarArreglo()" id="media">Promedio</button>
-  
-      <h3>Inveritr numeros</h3>
-      <input text="number" id="cadena">
-      <button type="button" id="butoncadena">Invertir</button>
-  
-  
-      <h3>Administrador de tarea</h3>
-  
-      <form id="formsTarea">
-          <label for="inputTarea">Ingresa la tarea:</label>
-          <input type="text" id="inputTarea" required>
-          <button type="button" id="butonTarea">Agregar</button>
-      </form>
-  
-      <ul id="listaTareas"></ul>
-  
-      <h3>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h3>
-      <p>
-          Java y JavaScript son dos lenguajes de programación populares, pero son bastante diferentes en términos de
-          sintaxis, uso y características. Java es un lenguaje de programación de propósito general que se utiliza para
-          desarrollar aplicaciones de escritorio, aplicaciones web del lado del servidor, y aplicaciones para Android.
-          JavaScript, por otro lado, se utiliza principalmente en el desarrollo web del lado del cliente para hacer
-          páginas web interactivas. Sin embargo, con la llegada de Node.js, JavaScript también se puede usar para el
-          desarrollo del lado del servidor.
-      </p>
-      <p>
-          Java es un lenguaje de programación de tipado estático, lo que significa que debes declarar el tipo de una
-          variable cuando la creas y no puedes cambiar su tipo más tarde. JavaScript es un lenguaje de tipado dinámico, lo
-          que significa que no necesitas declarar el tipo de una variable cuando la creas y puedes cambiar su tipo más
-          tarde.
-      </p>
-      <p>
-          Java se compila en bytecode que luego se ejecuta en la Máquina Virtual de Java (JVM). JavaScript se interpreta
-          en el navegador, aunque los navegadores modernos utilizan compiladores JIT para mejorar el rendimiento.
-      </p>
-      <p>
-          Ambos lenguajes tienen una sintaxis que es en cierta medida similar a C y C++, con estructuras de control como
-          if-else, switch, for, while, etc. Tanto Java como JavaScript soportan la programación orientada a objetos. Sin
-          embargo, Java utiliza un modelo de clases, mientras que JavaScript utiliza un modelo basado en prototipos.
-      </p>
-      <p>
-          Ambos son lenguajes de programación muy populares y ampliamente utilizados con grandes comunidades de
-          desarrolladores y una gran cantidad de recursos de aprendizaje disponibles.
-      </p>
-      <p>
-          Es importante recordar que a pesar de las similitudes en sus nombres, Java y JavaScript son lenguajes de
-          programación muy diferentes y no están directamente relacionados entre sí. Hay un meme que dice que Java es a
-          Javascript como Ham es a Hamster.
-      </p>
-  
-      <h3>¿Qué métodos tiene el objeto Date? (Menciona al menos 5*)</h3>
-      <ul>
-          <li><strong>getDate():</strong> Este método devuelve el día del mes (de 1 a 31) para la fecha especificada.</li>
-          <li><strong>getMonth():</strong> Este método devuelve el mes (de 0 a 11) para la fecha especificada, según la
-              hora local. 0 corresponde a enero, 1 a febrero, y así sucesivamente.</li>
-          <li><strong>getFullYear():</strong> Este método devuelve el año de la fecha especificada, según la hora local.
-          </li>
-          <li><strong>getHours():</strong> Este método devuelve la hora (de 0 a 23) de la fecha y hora especificadas.</li>
-          <li><strong>getMinutes():</strong> Este método devuelve los minutos (de 0 a 59) de la fecha y hora
-              especificadas.</li>
-      </ul>
-  
-      <h4>Ejemplo de uso:</h4>
-      <pre><code>
-          let fecha = new Date();
-  
-          console.log(fecha.getDate());      // Devuelve el día del mes
-          console.log(fecha.getMonth());     // Devuelve el mes
-          console.log(fecha.getFullYear());  // Devuelve el año
-          console.log(fecha.getHours());     // Devuelve la hora
-          console.log(fecha.getMinutes());   // Devuelve los minutos
-  </code></pre>
-  
-      <h3>¿Qué métodos tienen los arreglos? (Menciona al menos 5*)</h3>
-      <ul>
-          <li><strong>push():</strong> Este método agrega uno o más elementos al final de un arreglo y devuelve la nueva
-              longitud del arreglo.</li>
-          <li><strong>pop():</strong> Este método elimina el último elemento de un arreglo y lo devuelve.</li>
-          <li><strong>shift():</strong> Este método elimina el primer elemento de un arreglo y lo devuelve.</li>
-          <li><strong>unshift():</strong> Este método agrega uno o más elementos al inicio de un arreglo y devuelve la
-              nueva longitud del arreglo.</li>
-          <li><strong>splice():</strong> Este método cambia el contenido de un arreglo eliminando, reemplazando o
-              agregando elementos.</li>
-      </ul>
-  
-      <h4>Ejemplo de uso:</h4>
-      <pre><code>
-  let arr = [1, 2, 3, 4, 5];
-  
-  arr.push(6);        // Agrega el número 6 al final del arreglo
-  arr.pop();          // Elimina el último elemento del arreglo
-  arr.shift();        // Elimina el primer elemento del arreglo
-  arr.unshift(0);     // Agrega el número 0 al inicio del arreglo
-  arr.splice(2, 1);   // Elimina 1 elemento desde el índice 2
-  
-  console.log(arr);   // Muestra el arreglo modificado
-  </code></pre>
-  
-      <h3>¿Cómo se declara una variable con alcance local dentro de una función?</h3>
-      <p>
-          En JavaScript, puedes declarar una variable con alcance local dentro de una función utilizando las palabras
-          clave <code>var</code>, <code>let</code> o <code>const</code>. Ejemplazo:
-      </p>
-      <pre><code>
-  function miFuncion() {
-    let variableLocal = "Soy local";
-    console.log(variableLocal);
+  if (request.url === "/") {
+    response.setHeader("Content-Type", "text/html");
+    response.write(`<!-- Para especificar la versionde html que esta utilizando esta pagina-->
+    <!DOCTYPE html>
+    
+    <!-- La etiqueta <html> se utiliza para definir un documento HTML
+        (define el inicio y fin de la pgaina).-->
+    
+    <!-- El atributo lang en la etiqueta <html> se utiliza
+        para declarar el idioma del documento HTML. 
+        En este caso, lang="es" indica que el idioma del 
+        documento es español.-->
+    <html lang="es">
+    
+    <!-- La etiqueta <head> en HTML se utiliza para contener
+        metadatos (datos sobre los datos) del documento HTML.
+        Los metadatos no se muestran en la página web, pero
+        son útiles para los navegadores, motores de búsqueda y otras aplicaciones web.-->
+    
+    <head>
+    
+        <!--Define el título del documento, que se muestra en la barra
+            de título del navegador o en la pestaña del navegador.-->
+        <title> Mi pagina web</title>
+        <!--Para poder usar acentos jajaja-->
+        <meta charset="UTF-8">
+    
+        <!--Este es external level, usar un documento externo .css
+            para despues vincularlo y que pueda acceder a su contenido
+        
+            rel= Especifica la relación del recurso vinculado con el documento actual. 
+            En este caso, indica que el recurso es una hoja de estilo.
+    
+            type= Especifica el tipo de medio del recurso vinculado. En este ejemplo, 
+            indica que se trata de una hoja de estilo en formato CSS.
+    
+            href= Especifica la ubicación del archivo CSS externo que se va a vincular.
+        
+            -->
+        
+    
+    
+        <!--Esta forma de estilo es document level, en el mismo documento .html
+            en la head pones el estilo dentro de las etiquetas <style> en el lenguaja css-->
+        <style>
+        *{color:#00f}body{margin:0 auto;max-width:50em;text-align:justify}.pregunta{margin-top:1em;padding-top:1em;color:#b22222}#preguntasHTML{font-style:italic}input[type=text]{width:200px}a:hover{color:#adff2f}p::first-letter{font-size:40px;border-left-color:#7fffd4;font-weight:700;color:#000}nav a:hover{color:red}code{background:#eee}
+        </style>
+    
+    
+    
+    </head>
+    
+    
+    <!-- La etiqueta <body> en HTML se utiliza para definir el cuerpo
+        del documento HTML, es decir, todo el contenido visible de la página web.-->
+    
+    <body>
+        <!--<h#> Define los encabezados, mientras menor el numero más grande el titulo (del 1 al 6).-->
+        <h1>Mi pagina web</h1>
+        <!-- <hr> crea una línea horizontal-->
+        <hr>
+        <h2>Diego Lira García</h2>
+        <h3 class="pregunta">A01710369</h3>
+        <h3 class="pregunta">a01710369@tec.mx</h3>
+        <h3 class="pregunta">Ing. en Tecnologías Computacionales</h3>
+        <hr>
+    
+        <h2>Contenido:</h2>
+    
+        <nav>
+            <a href="#HTMLPRE">Preguntas sobre HTML</a>
+            <a href="#CSSPRE">Preguntas sobre CSS</a>
+            <a href="#Referencias">Referencias</a>
+        </nav>
+    
+        <h1 id="HTMLPRE">Preguntas de HTML</h1>
+    
+        <h3 class="pregunta" id="preguntasHTML">¿Cuál es la diferencia entre Internet y la World Wide Web?</h3>
+    
+        <p>
+            El internet es la conexión entre dispositivos, como computadoras
+            o teléfonos celulares a nivel mundial. Mientras que World Wide Web es un sistema de información en el
+            Internet que permite a los usuarios acceder y transferir información.
+        </p>
+    
+        <h3 class="pregunta" id="preguntasHTML">¿Cuáles son las partes de un URL?</h3>
+    
+        <!--en src se pone la ruta de la imagen y en alt una descripcion-->
+        <img src="partes-url-ejemplos.png" alt="Partes de un URL">
+    
+        <p>
+            Pukocz, E. (2019, November 3). Partes de una URL con ejemplos y explicación fácil. Edyta Pukocz.
+            https://edytapukocz.com/url-partes-ejemplos-facil/
+        </p>
+    
+        <br>
+    
+        <!--<ul> sirve para indicar que va a haber bullet points y <li> sirve para crear un nuevo bullet point-->
+        <ul>
+            <!--puedes poner el estilo en un linea de html, es inline level, pero es una mala practica
+                y para el laboratorio se no pidio no usarala pero asi luciria si la quisieras usar-->
+    
+            <!--<li style="font-size:20pt; color:#&7863ff"> Ejemplo: Este es un ejemplo de como funciona inline level</li>-->
+            <li>Protocolo: Indica el protocolo de comunicación utilizado para acceder al recurso</li>
+            <li>Subdominio: Es una parte opcional que precede al dominio principal.</li>
+            <li>Dominio: Es la dirección principal del recurso.</li>
+            <li>TLD (Top-Level Domain): Es la parte final del dominio y generalmente indica la naturaleza del sitio o su
+                origen</li>
+            <li>geográfico. Ejemplos comunes incluyen ".com", ".org", ".net", ".es", etc.</li>
+            <li>Ruta: Indica la ubicación específica del recurso en el servidor.</li>
+            <li>Parámetro: Se utiliza para enviar información adicional al servidor. Puede contener múltiples pares</li>
+            <li>(clave=valor) separados por "&" y viene despues de “?”</li>
+            <li>Etiqueta: La "etiqueta" no es una parte estándar de un URL. Puede referirse al fragmento, que se utiliza
+                para</li>
+            <li>indicar un fragmento específico dentro de la página web y se inicia con "#".</li>
+        </ul>
+    
+        <h3 class="pregunta" id="preguntasHTML">¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH,
+            DELETE?</h3>
+    
+        <ul>
+            <li>
+                GET:
+                Solicita datos de un recurso específico. Los parámetros se envían a través de la URL. No debe modificar el
+                estado del servidor.
+            </li>
+    
+            <li>
+                HEAD:
+                Solicita únicamente los encabezados del recurso, sin el cuerpo de la respuesta. Se utiliza para obtener
+                información sobre el recurso, como su tamaño o fecha de modificación, sin descargar el contenido completo.
+            </li>
+    
+            <li>
+                POST:
+                Envía datos al servidor para ser procesados y puede crear un nuevo recurso. Los datos se envían en el cuerpo
+                del
+                mensaje. Puede modificar el estado del servidor.
+            </li>
+    
+            <li>
+                PUT:
+                Actualiza o crea un recurso específico en el servidor. Similar a POST, pero se utiliza para actualizar
+                recursos
+                en ubicaciones específicas.
+            </li>
+    
+            <li>
+                PATCH:
+                Aplica parcialmente modificaciones a un recurso existente. Se utiliza para realizar actualizaciones
+                parciales en
+                lugar de reemplazar completamente un recurso.
+            </li>
+    
+            <li>
+                DELETE:
+                Elimina un recurso específico en el servidor.
+            </li>
+    
+        </ul>
+    
+        <h3 class="pregunta" id="preguntasHTML">
+            ¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y
+            contraseña en algún sitio? ¿Por qué?
+        </h3>
+    
+        <p>
+            El metodo POST
+            <br>
+            Esto se debe a que el método POST oculta los datos del usuario en el cuerpo de la solicitud, ofreciendo mayor
+            seguridad, ya que la información no es visible en la barra de direcciones del navegador ni en el historial del
+            mismo. Además, el método POST no tiene las limitaciones de longitud de datos, lo que lo hace más apropiado para
+            el envío de formularios con cantidades significativas de información. Tambien usar el método POST indicanda que
+            se está realizando una acción que puede tener efectos en el servidor, como agregar o actualizar datos.
+        </p>
+    
+    
+        <h3 class="pregunta" id="preguntasHTML">
+            ¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?
+        </h3>
+    
+        <p>
+            Get
+            <br>
+            El método GET se utiliza para solicitar datos de un recurso específico, como una página web, desde un servidor.
+            Con el método GET, los datos que se envían al servidor se escriben en la misma dirección URL.
+        </p>
+    
+        <h3 class="pregunta" id="preguntasHTML">
+            Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?
+        </h3>
+    
+        <p>
+            Cuando un servidor web devuelve una respuesta HTTP con el código 200, significa que la solicitud fue exitosa. La
+            solicitud del cliente ha sido recibida, comprendida y aceptada correctamente por el servidor, y este ha
+            respondido con la información solicitada.
+        </p>
+    
+        <h3 class="pregunta" id="preguntasHTML">
+            ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y
+            se encontró con un error 404? ¿Por qué?
+        </h3>
+    
+        <p>
+            Es responsabilidad del desarrollador corregir un error 404 cuando un usuario lo reporta. Este código indica que
+            el recurso solicitado no se encuentra en el servidor. Resolver enlaces rotos mejora la experiencia del usuario y
+            contribuye al mantenimiento del sitio. La corrección oportuna es crucial para la reputación en SEO, mostrando al
+            sitio como confiable y mantenido.
+        </p>
+    
+        <h3 class="pregunta" id="preguntasHTML">
+            ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y
+            se encontró con un error 500? ¿Por qué?
+        </h3>
+    
+        <p>
+            Sí, es responsabilidad del desarrollador corregir un error 500 en un sitio web cuando un usuario lo reporta. El
+            código de estado HTTP 500 indica un problema interno del servidor que afecta la experiencia del usuario y puede
+            deberse a fallos en el código o configuración.
+        </p>
+    
+        <h3 class="pregunta" id="preguntasHTML">
+            ¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de
+            HTML 4 que en HTML5 estén desaprobados.
+        </h3>
+    
+        <p>
+            Cuando un atributo HTML5 está "depreciado" o "desaprobado", significa que aunque aún es compatible con los
+            navegadores, se considera obsoleto y se aconseja usar en su lugar alternativas más modernas.
+        </p>
+    
+        <p>
+            Algunos elementos de HTML 4 que en HTML5 están desaprobados, porque se aconseja hacerlo en CSS incluyen:
+        <ul>
+            <!--<code> sirve para definir un bloque de código en línea. Este elemento indica al navegador que el 
+                texto contenido dentro de las etiquetas debe tratarse como código-->
+    
+            <!-- &lt; representa el símbolo menor que (<) -->
+    
+            <!-- &gt; representa el símbolo mayor que (>) -->
+    
+            <!--Estas entidades se utilizan para evitar la interpretación incorrecta de los caracteres < y > 
+                como etiquetas HTML reales cuando se escriben dentro del contenido de una página web.-->
+            <li><code>&lt;font&gt;</code></li>
+            <li><code>&lt;center&gt;</code></li>
+            <li><code>&lt;strike&gt;</code></li>
+            <li><code>&lt;big&gt;</code></li>
+        </ul>
+        </p>
+    
+        <h3 class="pregunta" id="preguntasHTML">
+            ¿Cuáles son las diferencias principales entre HTML 4 y HTML5?
+        </h3>
+    
+        <ul>
+            <li>Más elementos semánticos como <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>,
+                <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, entre otros.
+            </li>
+            <li>Soporte multimedia con <code>&lt;video&gt;</code> y <code>&lt;audio&gt;</code>.</li>
+            <li>Agregaron un lienzo para gráficos con <code>&lt;canvas&gt;</code>.</li>
+            <li>Mejoras en formularios, con campos para fecha, email, URL y número.</li>
+            <li>Capacidades de almacenamiento local mediante <code>localStorage</code> y <code>sessionStorage</code>.</li>
+            <li>API de geolocalización para ubicar a los usuarios por su posición geográfica.</li>
+            <li>Compatibilidad con dispositivos móviles: HTML5 está diseñado pensando en la adaptación a dispositivos
+                móviles.</li>
+        </ul>
+    
+        <h3 class="pregunta" id="preguntasHTML">¿Qué componentes de estructura y estilo tiene una tabla?</h3>
+    
+        <h4>Componentes de Estructura de una Tabla:</h4>
+    
+        <ul>
+            <li><code>&lt;table&gt;</code>: Elemento raíz que define la tabla.</li>
+            <li><code>&lt;tr&gt;</code> (table row): Define una fila en la tabla.</li>
+            <li><code>&lt;th&gt;</code> (table header cell): Define una celda de encabezado dentro de una fila. Se utiliza
+                para etiquetar columnas o filas.</li>
+            <li><code>&lt;td&gt;</code> (table data cell): Define una celda de datos dentro de una fila. Contiene el
+                contenido real de la tabla.</li>
+            <li><code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>: Estos elementos agrupan
+                secciones de la tabla. <code>&lt;thead&gt;</code> se utiliza para encabezados, <code>&lt;tbody&gt;</code>
+                para el cuerpo de la tabla, y <code>&lt;tfoot&gt;</code> para el pie de la tabla.</li>
+        </ul>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Encabezado 1 (&ltth>)</th>
+                    <th>Encabezado 2 (&lt;th&gt;)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dato 1 (&lttd&gt)</td>
+                    <td>Dato 2 (&lttd&gt)</td>
+                </tr>
+                <tr>
+                    <td>Dato 3 (&lttd&gt)</td>
+                    <td>Dato 4 (&lttd&gt)</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Pie 1 (&lttd&gt)</td>
+                    <td>Pie 2 (&lttd&gt)</td>
+                </tr>
+            </tfoot>
+        </table>
+    
+    
+        <h4>Componentes de Estilo de una Tabla:</h4>
+    
+        <ul>
+            <li><code>border</code>: Controla el ancho del borde de la tabla.</li>
+            <li><code>cellpadding</code>: Establece el espacio interno de las celdas.</li>
+            <li><code>cellspacing</code>: Establece el espacio entre las celdas.</li>
+            <li><code>&lt;colgroup&gt;</code> y <code>&lt;col&gt;</code>: Estos elementos permiten aplicar estilos y
+                propiedades a columnas enteras.</li>
+        </ul>
+    
+        <p>Codigo del estilo:</p>
+        <code>
+    
+            &ltstyle><br>
+                table {<br>
+                    border-collapse: collapse;<br>
+                    width: 100%;<br>
+                }<br>
+                <br>
+                th,<br>
+                td {<br>
+                    border: 1px solid black;<br>
+                    padding: 8px;<br>
+                    text-align: left;<br>
+                }<br>
+                <br>
+                colgroup {<br>
+                    background-color: #f2f2f2;<br>
+                }<br>
+            </style>
+        </code>
+    
+        <h3 class="pregunta" id="preguntasHTML">¿Cuáles son los principales controles de una forma HTML5?</h3>
+    
+        <input type="text">: Campo de texto para ingresar texto.<br>
+        <br>
+        <input type="password">: Campo de contraseña para ingresar contraseñas.<br>
+        <br>
+        <input type="email">: Campo de entrada de correo electrónico con validación automática.<br>
+        <br>
+        <input type="tel">: Campo de entrada de número de teléfono.<br>
+        <br>
+        <input type="number">: Campo de entrada de números con controles de incremento y decremento.<br>
+        <br>
+        <input type="checkbox">: Casilla de verificación para seleccionar opciones múltiples.<br>
+        <input type="checkbox">: Casilla de verificación para seleccionar opciones múltiples.<br>
+        <input type="checkbox">: Casilla de verificación para seleccionar opciones múltiples.<br>
+        <br>
+        <input type="radio" name="opciones">: Botón de opción para seleccionar una opción de un grupo.<br>
+        <input type="radio" name="opciones">: Botón de opción para seleccionar una opción de un grupo.<br>
+        <input type="radio" name="opciones">: Botón de opción para seleccionar una opción de un grupo.<br>
+        <br>
+        <select>
+            <option>: Menú desplegable con opciones seleccionables.</option> <br>
+        </select>
+        <br>
+        <textarea>: Área de texto de múltiples líneas para la entrada de texto extenso. </textarea><br>
+        <br>
+        <input type="file">: Botón para cargar archivos desde el sistema del usuario.<br>
+        <br>
+        <input type="submit"> y <input type="button">: Botones para enviar formularios o ejecutar scripts,
+        respectivamente.<br>
+        <br>
+        <input type="reset">: Botón para restablecer los valores del formulario a sus valores predeterminados.<br>
+        <br>
+        <input type="date">, <input type="time">, <input type="datetime-local">: Campos para seleccionar fechas y horas.<br>
+        <br>
+        <input type="color">: Selector de color.<br>
+    
+        <h3 class="pregunta" id="preguntasHTML">¿Qué tanto soporte HTML5 tiene el navegador que utilizas? Puedes utilizar la
+            siguiente página
+            para descubrirlo:
+            http://html5test.com/ (Al responder la pregunta recuerda poner el navegador que utilizas)
+        </h3>
+    
+        <p>
+            581/594
+    
+            Chrome 111 on macOS Catalina 10.15
+        </p>
+    
+        <h3 class="pregunta" id="preguntasHTML">¿Cuál es el ciclo de desarrollo de sistemas de información?</h3>
+    
+        <ul>
+            <li>Planificación: Identificación de necesidades y elaboración de un plan.</li>
+    
+            <li>Análisis: Recopilación y documentación de requisitos.</li>
+    
+            <li>Diseño: Definición de la arquitectura y detalles técnicos.</li>
+    
+            <li>Implementación: Desarrollo del software y pruebas unitarias.</li>
+    
+            <li>Pruebas: Verificación del funcionamiento del sistema.</li>
+    
+            <li>Mantenimiento: Uso diario y actualizaciones según sea necesario.</li>
+    
+            <li>Retiro o Reemplazo: Retiro del sistema cuando sea necesario.</li>
+    
+        </ul>
+    
+        <h3 class="pregunta" id="preguntasHTML">¿Cuál es el ciclo de vida de los sistemas de información?</h3>
+    
+        <ul>
+            <li>Inicio</li>
+            <li>Planificación</li>
+            <li>Ejecución</li>
+            <li>Supervisión</li>
+            <li>Cierre</li>
+        </ul>
+    
+        <div class="pregunta">
+            <h1 id="CSSPRE">Pregunta de CSS</h1>
+    
+            <h3>clas ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS?</h3>
+    
+            <p>!important es una declaración en CSS que se utiliza para darle prioridad a una regla de estilo específica.
+                !important puede ser una herramienta útil en circunstancias específicas, pero su uso debe ser cuidadoso y
+                justificado. Priorizar la claridad, la especificidad y la comprensión del flujo de la cascada de estilos en
+                CSS contribuirá a un código más mantenible y fácil de trabajar a largo plazo.</p>
+    
+            <h3>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?</h3>
+    
+            <p>
+                Debe considerarse el contraste, la carga rápida de la página y cómo la imagen se integra con el diseño
+                general. Una mala elección puede afectar negativamente la experiencia del usuario y la estética de la
+                página.
+            </p>
+    
+            <h3>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre
+                %, px y pt?
+            </h3>
+    
+            <p>
+                Al elegir unidades de estilo en CSS, como %, px, o pt, se recomienda utilizar % para propiedades relativas
+                al
+                contenedor principal en diseño responsivo, px para tamaños fijos cuando sea necesario, y pt para tamaños de
+                fuente en contextos de impresión. La elección dependerá del contexto y los requisitos del diseño,
+                considerando la escalabilidad y adaptabilidad del diseño en diferentes dispositivos.
+            </p>
+    
+            <h3>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</h3>
+    
+            <p>
+                El uso de una versión minimizada del CSS mejora el rendimiento del sitio al reducir el tamaño del archivo al
+                eliminar comentarios, espacios en blanco y caracteres no esenciales. Esto resulta en tiempos de carga más
+                rápidos, especialmente en conexiones de red más lentas, al disminuir el tiempo de transferencia de datos
+                desde el servidor al navegador.
+            </p>
+    
+    
+        </div>
+    
+        <h1>Javascript</h1>
+    
+        <h3>Hacer una tabla</h3>
+        <button id="tablaDeCuadrados">Hacer tabla</button>
+    
+        <h3>Pregunta de suma</h3>
+        <button id="sumaBoton">Hacer suma</button>
+    
+        <h3>Contador de numeros</h3>
+        <form id="formsconta">
+            <label for="inputconta">Ingresa el arreglo (separado por comas):</label>
+            <input type="text" id="inputconta" required>
+            <!--mala practica usar onclick, porque mezclas estructura html con el comportamiento (javascript)-->
+            <button type="button" onclick="contarArreglo()">Contar</button>
+        </form>
+    
+        <h3>Promedio de matriz</h3>
+        <button type="button" onclick="promediarArreglo()" id="media">Promedio</button>
+    
+        <h3>Inveritr numeros</h3>
+        <input text="number" id="cadena">
+        <button type="button" id="butoncadena">Invertir</button>
+    
+    
+        <h3>Administrador de tarea</h3>
+    
+        <form id="formsTarea">
+            <label for="inputTarea">Ingresa la tarea:</label>
+            <input type="text" id="inputTarea" required>
+            <button type="button" id="butonTarea">Agregar</button>
+        </form>
+    
+        <ul id="listaTareas"></ul>
+    
+        <h3>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h3>
+        <p>
+            Java y JavaScript son dos lenguajes de programación populares, pero son bastante diferentes en términos de
+            sintaxis, uso y características. Java es un lenguaje de programación de propósito general que se utiliza para
+            desarrollar aplicaciones de escritorio, aplicaciones web del lado del servidor, y aplicaciones para Android.
+            JavaScript, por otro lado, se utiliza principalmente en el desarrollo web del lado del cliente para hacer
+            páginas web interactivas. Sin embargo, con la llegada de Node.js, JavaScript también se puede usar para el
+            desarrollo del lado del servidor.
+        </p>
+        <p>
+            Java es un lenguaje de programación de tipado estático, lo que significa que debes declarar el tipo de una
+            variable cuando la creas y no puedes cambiar su tipo más tarde. JavaScript es un lenguaje de tipado dinámico, lo
+            que significa que no necesitas declarar el tipo de una variable cuando la creas y puedes cambiar su tipo más
+            tarde.
+        </p>
+        <p>
+            Java se compila en bytecode que luego se ejecuta en la Máquina Virtual de Java (JVM). JavaScript se interpreta
+            en el navegador, aunque los navegadores modernos utilizan compiladores JIT para mejorar el rendimiento.
+        </p>
+        <p>
+            Ambos lenguajes tienen una sintaxis que es en cierta medida similar a C y C++, con estructuras de control como
+            if-else, switch, for, while, etc. Tanto Java como JavaScript soportan la programación orientada a objetos. Sin
+            embargo, Java utiliza un modelo de clases, mientras que JavaScript utiliza un modelo basado en prototipos.
+        </p>
+        <p>
+            Ambos son lenguajes de programación muy populares y ampliamente utilizados con grandes comunidades de
+            desarrolladores y una gran cantidad de recursos de aprendizaje disponibles.
+        </p>
+        <p>
+            Es importante recordar que a pesar de las similitudes en sus nombres, Java y JavaScript son lenguajes de
+            programación muy diferentes y no están directamente relacionados entre sí. Hay un meme que dice que Java es a
+            Javascript como Ham es a Hamster.
+        </p>
+    
+        <h3>¿Qué métodos tiene el objeto Date? (Menciona al menos 5*)</h3>
+        <ul>
+            <li><strong>getDate():</strong> Este método devuelve el día del mes (de 1 a 31) para la fecha especificada.</li>
+            <li><strong>getMonth():</strong> Este método devuelve el mes (de 0 a 11) para la fecha especificada, según la
+                hora local. 0 corresponde a enero, 1 a febrero, y así sucesivamente.</li>
+            <li><strong>getFullYear():</strong> Este método devuelve el año de la fecha especificada, según la hora local.
+            </li>
+            <li><strong>getHours():</strong> Este método devuelve la hora (de 0 a 23) de la fecha y hora especificadas.</li>
+            <li><strong>getMinutes():</strong> Este método devuelve los minutos (de 0 a 59) de la fecha y hora
+                especificadas.</li>
+        </ul>
+    
+        <h4>Ejemplo de uso:</h4>
+        <pre><code>
+            let fecha = new Date();
+    
+            console.log(fecha.getDate());      // Devuelve el día del mes
+            console.log(fecha.getMonth());     // Devuelve el mes
+            console.log(fecha.getFullYear());  // Devuelve el año
+            console.log(fecha.getHours());     // Devuelve la hora
+            console.log(fecha.getMinutes());   // Devuelve los minutos
+    </code></pre>
+    
+        <h3>¿Qué métodos tienen los arreglos? (Menciona al menos 5*)</h3>
+        <ul>
+            <li><strong>push():</strong> Este método agrega uno o más elementos al final de un arreglo y devuelve la nueva
+                longitud del arreglo.</li>
+            <li><strong>pop():</strong> Este método elimina el último elemento de un arreglo y lo devuelve.</li>
+            <li><strong>shift():</strong> Este método elimina el primer elemento de un arreglo y lo devuelve.</li>
+            <li><strong>unshift():</strong> Este método agrega uno o más elementos al inicio de un arreglo y devuelve la
+                nueva longitud del arreglo.</li>
+            <li><strong>splice():</strong> Este método cambia el contenido de un arreglo eliminando, reemplazando o
+                agregando elementos.</li>
+        </ul>
+    
+        <h4>Ejemplo de uso:</h4>
+        <pre><code>
+    let arr = [1, 2, 3, 4, 5];
+    
+    arr.push(6);        // Agrega el número 6 al final del arreglo
+    arr.pop();          // Elimina el último elemento del arreglo
+    arr.shift();        // Elimina el primer elemento del arreglo
+    arr.unshift(0);     // Agrega el número 0 al inicio del arreglo
+    arr.splice(2, 1);   // Elimina 1 elemento desde el índice 2
+    
+    console.log(arr);   // Muestra el arreglo modificado
+    </code></pre>
+    
+        <h3>¿Cómo se declara una variable con alcance local dentro de una función?</h3>
+        <p>
+            En JavaScript, puedes declarar una variable con alcance local dentro de una función utilizando las palabras
+            clave <code>var</code>, <code>let</code> o <code>const</code>. Ejemplazo:
+        </p>
+        <pre><code>
+    function miFuncion() {
+        let variableLocal = "Soy local";
+        console.log(variableLocal);
+    }
+    
+    miFuncion(); // Imprime: "Soy local"
+    console.log(variableLocal); // Error: variableLocal is not defined
+    </code></pre>
+        <p>
+            En este ejemplo, <code>variableLocal</code> es una variable con alcance local a la función
+            <code>miFuncion</code>. Esto significa que solo se puede acceder a <code>variableLocal</code> dentro de
+            <code>miFuncion</code>. Si intentas acceder a <code>variableLocal</code> fuera de <code>miFuncion</code>,
+            obtendrás un error porque <code>variableLocal</code> no está definida en ese alcance.
+        </p>
+    
+        <h3>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h3>
+    <ul>
+        <li><strong>Acoplamiento de código:</strong> Si una función depende de una variable global, se vuelve menos flexible y más difícil de reutilizar en diferentes contextos, ya que está acoplada a esa variable global.</li>
+        <li><strong>Riesgo de colisiones de nombres:</strong> Si tienes muchas variables globales, puedes terminar accidentalmente reutilizando un nombre de variable, lo que puede llevar a comportamientos inesperados en tu código.</li>
+        <li><strong>Dificultad para rastrear y depurar el código:</strong> Las variables globales pueden ser modificadas desde cualquier lugar en tu código, lo que puede hacer que sea más difícil rastrear y depurar problemas.</li>
+        <li><strong>Riesgo de mutación no intencionada:</strong> Si una función modifica una variable global, puede afectar a otras funciones que también dependen de esa variable global, lo que puede llevar a comportamientos inesperados.</li>
+    </ul>
+    
+        <!--<footer> es una buena forma de seccionar la pagina-->
+        <footer>
+    
+            <h2 id="Referencias">Referencias:</h2>
+    
+    
+            <!--<ol> es para que es numeren los elementos-->
+            <ol>
+                <li>
+                    <!--<a> es para poner hipervinculos, en href= va el link y en target= es para idicar como se va a abrir 
+                            el link si en una pestaña nuevo o en la mista entre otras opciones -->
+                    <a href="https://elcomercio.pe/tecnologia/actualidad/diferencia-internet-web-confunden-noticia-616247-noticia/"
+                        target="_blank">
+                        Perú, E. C. (2019, March 13). ¿Cuál es la diferencia entre internet y la web y por qué muchos las
+                        confunden? El Comercio Perú.
+                        https://elcomercio.pe/tecnologia/actualidad/diferencia-internet-web-confunden-noticia-616247-noticia/
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="https://edytapukocz.com/url-partes-ejemplos-facil/" target="_blank">
+                        Pukocz, E. (2022, March 24). Partes de una URL con ejemplos y explicación fácil. Edyta Pukocz.
+                        https://edytapukocz.com/url-partes-ejemplos-facil/
+    
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods" target="_blank">
+                        Métodos de petición HTTP - HTTP | MDN. (2023, July 24). MDN Web Docs.
+                        https://developer.mozilla.org/es/docs/Web/HTTP/Methods </a>
+                </li>
+    
+                <li>
+                    <a href="https://www.ionos.mx/digitalguide/paginas-web/desarrollo-web/get-vs-post/" target="_blank">
+                        Equipo editorial de IONOS. (2020, August 11). GET vs. POST: los dos métodos de petición HTTP más
+                        conocidos cara a cara. IONOS Digital Guide.
+                        https://www.ionos.mx/digitalguide/paginas-web/desarrollo-web/get-vs-post/
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="https://www.woorank.com/es/edu/seo-guides/codigos-estado-http" target="_blank">
+                        WooRank. (2023, March 16). Qué significan los códigos de estado HTTP en SEO. WooRank.
+                        https://www.woorank.com/es/edu/seo-guides/codigos-estado-http </a>
+                </li>
+    
+                <li>
+                    <a href="https://www.dongee.com/tutoriales/las-principales-diferencias-entre-html-y-html5/"
+                        target="_blank">
+                        Jesús. (2023, February 7). Las principales diferencias entre HTML y HTML5. Tutoriales Dongee.
+                        https://www.dongee.com/tutoriales/las-principales-diferencias-entre-html-y-html5/ </a>
+                </li>
+    
+                <li>
+                    <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank">
+                        HTML: Lenguaje de etiquetas de hipertexto | MDN. (2023, July 24). MDN Web Docs.
+                        https://developer.mozilla.org/es/docs/Web/HTML </a>
+                </li>
+    
+                <li>
+                    <a href="https://www.mclibre.org/consultar/htmlcss/html/html-tablas.html" target="_blank">
+                        Marco, B. S. (n.d.). Tablas. HTML. Páginas web HTML y hojas de estilo CSS. Bartolomé Sintes Marco.
+                        www.mclibre.org. https://www.mclibre.org/consultar/htmlcss/html/html-tablas.html </a>
+                </li>
+    
+                <li>
+                    <a href="https://www.mclibre.org/consultar/htmlcss/html/html-formularios.html" target="_blank">
+                        Marco, B. S. (n.d.). Formularios (1). HTML. Páginas web HTML y hojas de estilo CSS. Bartolomé Sintes
+                        Marco. www.mclibre.org. https://www.mclibre.org/consultar/htmlcss/html/html-formularios.html
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="https://www.atlassian.com/es/work-management/project-management/phases" target="_blank">
+                        Atlassian. (n.d.). Comprensión de las fases de la gestión de proyectos.
+                        https://www.atlassian.com/es/work-management/project-management/phases
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="https://gestiopolis.com/ciclo-de-vida-de-un-sistema-de-informacion/" target="_blank">
+                        Guerrero, A. C. (2015, July 20). Ciclo de vida de un sistema de información • gestiopolis.
+                        Gestiopolis. https://gestiopolis.com/ciclo-de-vida-de-un-sistema-de-informacion/
+    
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="https://chat.openai.com/chat" target="_blank">
+                        OpenAI. (2023). ChatGPT (versión del 15 de febrero del 2024) [Modelo de lenguaje de gran tamaño].
+                        https://chat.openai.com/chat </a>
+                </li>
+            </ol>
+    
+            <p>Editor usado: <a href="https://code.visualstudio.com/">Visual Studio Code</a></p>
+    
+        </footer>
+    
+        <!--usa <script> en type va text/javascript y en el src el path a el archivo js-->
+        <script></script>
+    
+    </body>
+    
+    </html>`);
+    response.end();
+  }else{
+
+    response.statusCode = 404;
+
+    response.end();
+
   }
-  
-  miFuncion(); // Imprime: "Soy local"
-  console.log(variableLocal); // Error: variableLocal is not defined
-  </code></pre>
-      <p>
-          En este ejemplo, <code>variableLocal</code> es una variable con alcance local a la función
-          <code>miFuncion</code>. Esto significa que solo se puede acceder a <code>variableLocal</code> dentro de
-          <code>miFuncion</code>. Si intentas acceder a <code>variableLocal</code> fuera de <code>miFuncion</code>,
-          obtendrás un error porque <code>variableLocal</code> no está definida en ese alcance.
-      </p>
-  
-      <h3>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h3>
-  <ul>
-      <li><strong>Acoplamiento de código:</strong> Si una función depende de una variable global, se vuelve menos flexible y más difícil de reutilizar en diferentes contextos, ya que está acoplada a esa variable global.</li>
-      <li><strong>Riesgo de colisiones de nombres:</strong> Si tienes muchas variables globales, puedes terminar accidentalmente reutilizando un nombre de variable, lo que puede llevar a comportamientos inesperados en tu código.</li>
-      <li><strong>Dificultad para rastrear y depurar el código:</strong> Las variables globales pueden ser modificadas desde cualquier lugar en tu código, lo que puede hacer que sea más difícil rastrear y depurar problemas.</li>
-      <li><strong>Riesgo de mutación no intencionada:</strong> Si una función modifica una variable global, puede afectar a otras funciones que también dependen de esa variable global, lo que puede llevar a comportamientos inesperados.</li>
-  </ul>
-  
-      <!--<footer> es una buena forma de seccionar la pagina-->
-      <footer>
-  
-          <h2 id="Referencias">Referencias:</h2>
-  
-  
-          <!--<ol> es para que es numeren los elementos-->
-          <ol>
-              <li>
-                  <!--<a> es para poner hipervinculos, en href= va el link y en target= es para idicar como se va a abrir 
-                          el link si en una pestaña nuevo o en la mista entre otras opciones -->
-                  <a href="https://elcomercio.pe/tecnologia/actualidad/diferencia-internet-web-confunden-noticia-616247-noticia/"
-                      target="_blank">
-                      Perú, E. C. (2019, March 13). ¿Cuál es la diferencia entre internet y la web y por qué muchos las
-                      confunden? El Comercio Perú.
-                      https://elcomercio.pe/tecnologia/actualidad/diferencia-internet-web-confunden-noticia-616247-noticia/
-                  </a>
-              </li>
-  
-              <li>
-                  <a href="https://edytapukocz.com/url-partes-ejemplos-facil/" target="_blank">
-                      Pukocz, E. (2022, March 24). Partes de una URL con ejemplos y explicación fácil. Edyta Pukocz.
-                      https://edytapukocz.com/url-partes-ejemplos-facil/
-  
-                  </a>
-              </li>
-  
-              <li>
-                  <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods" target="_blank">
-                      Métodos de petición HTTP - HTTP | MDN. (2023, July 24). MDN Web Docs.
-                      https://developer.mozilla.org/es/docs/Web/HTTP/Methods </a>
-              </li>
-  
-              <li>
-                  <a href="https://www.ionos.mx/digitalguide/paginas-web/desarrollo-web/get-vs-post/" target="_blank">
-                      Equipo editorial de IONOS. (2020, August 11). GET vs. POST: los dos métodos de petición HTTP más
-                      conocidos cara a cara. IONOS Digital Guide.
-                      https://www.ionos.mx/digitalguide/paginas-web/desarrollo-web/get-vs-post/
-                  </a>
-              </li>
-  
-              <li>
-                  <a href="https://www.woorank.com/es/edu/seo-guides/codigos-estado-http" target="_blank">
-                      WooRank. (2023, March 16). Qué significan los códigos de estado HTTP en SEO. WooRank.
-                      https://www.woorank.com/es/edu/seo-guides/codigos-estado-http </a>
-              </li>
-  
-              <li>
-                  <a href="https://www.dongee.com/tutoriales/las-principales-diferencias-entre-html-y-html5/"
-                      target="_blank">
-                      Jesús. (2023, February 7). Las principales diferencias entre HTML y HTML5. Tutoriales Dongee.
-                      https://www.dongee.com/tutoriales/las-principales-diferencias-entre-html-y-html5/ </a>
-              </li>
-  
-              <li>
-                  <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank">
-                      HTML: Lenguaje de etiquetas de hipertexto | MDN. (2023, July 24). MDN Web Docs.
-                      https://developer.mozilla.org/es/docs/Web/HTML </a>
-              </li>
-  
-              <li>
-                  <a href="https://www.mclibre.org/consultar/htmlcss/html/html-tablas.html" target="_blank">
-                      Marco, B. S. (n.d.). Tablas. HTML. Páginas web HTML y hojas de estilo CSS. Bartolomé Sintes Marco.
-                      www.mclibre.org. https://www.mclibre.org/consultar/htmlcss/html/html-tablas.html </a>
-              </li>
-  
-              <li>
-                  <a href="https://www.mclibre.org/consultar/htmlcss/html/html-formularios.html" target="_blank">
-                      Marco, B. S. (n.d.). Formularios (1). HTML. Páginas web HTML y hojas de estilo CSS. Bartolomé Sintes
-                      Marco. www.mclibre.org. https://www.mclibre.org/consultar/htmlcss/html/html-formularios.html
-                  </a>
-              </li>
-  
-              <li>
-                  <a href="https://www.atlassian.com/es/work-management/project-management/phases" target="_blank">
-                      Atlassian. (n.d.). Comprensión de las fases de la gestión de proyectos.
-                      https://www.atlassian.com/es/work-management/project-management/phases
-                  </a>
-              </li>
-  
-              <li>
-                  <a href="https://gestiopolis.com/ciclo-de-vida-de-un-sistema-de-informacion/" target="_blank">
-                      Guerrero, A. C. (2015, July 20). Ciclo de vida de un sistema de información • gestiopolis.
-                      Gestiopolis. https://gestiopolis.com/ciclo-de-vida-de-un-sistema-de-informacion/
-  
-                  </a>
-              </li>
-  
-              <li>
-                  <a href="https://chat.openai.com/chat" target="_blank">
-                      OpenAI. (2023). ChatGPT (versión del 15 de febrero del 2024) [Modelo de lenguaje de gran tamaño].
-                      https://chat.openai.com/chat </a>
-              </li>
-          </ol>
-  
-          <p>Editor usado: <a href="https://code.visualstudio.com/">Visual Studio Code</a></p>
-  
-      </footer>
-  
-      <!--usa <script> en type va text/javascript y en el src el path a el archivo js-->
-      <script></script>
-  
-  </body>
-  
-  </html>`);
-  response.end();
+
+
 });
 
 server.listen(3000);

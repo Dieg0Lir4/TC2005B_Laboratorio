@@ -30,12 +30,12 @@ document.getElementById("password").addEventListener("input", () => {
     document.getElementById("passwordReminder").style.display = "none";
     if (hasNumber) {
       document.getElementById("passwordReminder").style.display = "none";
-      if (hasSpecial) {
+      if (/W/.test(pass)){
         document.getElementById("passwordReminder").style.display = "none";
         valida = true;
       } else {
         document.getElementById("passwordReminder").innerHTML =
-          'Tu contraseña debe tener al menos un caracter especial ["!", "@", "#", "$", "%", "&", "*"]';
+          'Tu contraseña debe tener al menos un caracter especial';
         document.getElementById("passwordReminder").style.display = "block";
         valida = false;
       }
