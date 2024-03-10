@@ -1,0 +1,40 @@
+<%- include ('includes/header')%>
+    <main>
+        <div class="banner">
+            <div style="overflow: hidden" class="h-40">
+                <img src="https://i.pinimg.com/originals/2b/1d/fe/2b1dfec19b945a19ac39641278a6a799.jpg"
+                    alt="Pokedex Banner" class="w-screen max-40" />
+            </div>
+            <div class=" ">
+                <h2 class="text-2xl font-bold flex justify-center mb-8">
+                    Pokemones Agregados Reciententes:
+                </h2>
+                <div>
+
+                    
+
+                    <div class="flex flex-wrap justify-center gap-4">
+                    
+                        <% const lastThreePokemons = pokemones.slice(-3); %>
+
+                        <% lastThreePokemons.forEach(pokemon => { %>
+                            <div class="bg-white p-4 rounded shadow-md">
+                                <img src="<%= pokemon.imagen%>"
+                                    alt="<%= pokemon.name%>" class="w-40 h-40" />
+                                <h3 class="text-xl font-bold"> <%= pokemon.nombre%> </h3>
+                                <p> <%= pokemon.tipo%> </p>
+                                <p>  </p>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-8 mb-10">
+                <a href="/agregar_pokemon" class="flex bg-blue-500 text-white px-4 py-2 rounded justify-center">Agregar
+                    Pokemon
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <%- include ('includes/footer')%>

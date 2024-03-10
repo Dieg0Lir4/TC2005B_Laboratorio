@@ -1,0 +1,28 @@
+{
+  "name": "laboratorio13_en_adelante",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dieg0Lir4/TC2005B_Laboratorio.git#develop"
+  },
+  "author": "DiegoLG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dieg0Lir4/TC2005B_Laboratorio/issues"
+  },
+  "homepage": "https://github.com/Dieg0Lir4/TC2005B_Laboratorio/tree/develop#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.3"
+  }
+}

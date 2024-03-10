@@ -1,0 +1,28 @@
+<%- include ('includes/header')%>
+<main>
+    <div class="mb-16">
+        <h2 class="text-2xl font-bold flex justify-center mb-8 mt-16">
+            Agregar un nuevo Pokemon:
+        </h2>
+        <div class="flex justify-center">
+            <form class="bg-white p-4 rounded shadow-md" action="/agregar_pokemon" method="POST">
+                <label for="nombre" class="block mb-2">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="border-2 border-gray-200 rounded w-full p-2 mb-4"
+                    required>
+
+                <label for="tipo" class="block mb-2">Tipo:</label>
+                <input type="text" id="tipo" name="tipo" class="border-2 border-gray-200 rounded w-full p-2 mb-4"
+                    required>
+
+                <label for="imagen" class="block mb-2">URL de la imagen:</label>
+                <input type="text" id="imagen" name="imagen"
+                    class="border-2 border-gray-200 rounded w-full p-2 mb-4" required>
+
+                <input type="submit" value="Agregar Pokemon"
+                    class="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer">
+            </form>
+        </div>
+    </div>
+
+</main>
+<%- include ('includes/footer')%>
