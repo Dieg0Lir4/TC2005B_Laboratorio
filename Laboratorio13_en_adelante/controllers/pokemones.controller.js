@@ -19,6 +19,7 @@ exports.post_agregar_pokemon = (req, res) => {
   let pokemon = new Pokemon(req.body.nombre, req.body.tipo, req.body.imagen);
   pokemon.save();
   res.setHeader("Set-Cookie", "ultimopokemon=" + pokemon.nombre + "; HttpOnly");
+  username: req.session.email || "No hay usuario logueado",
   res.redirect("/");
 };
 
