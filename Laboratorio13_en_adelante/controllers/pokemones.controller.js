@@ -1,12 +1,15 @@
 const Pokemon = require("../models/pokemon.model");
 
 exports.get_home = (req, res) => {
-  res.render("home", {
-    pokemones: Pokemon.fetchAll(),
-    ultimoPokemon:
-      req.cookies.ultimopokemon || "No hay pokemones agreagados ultimamente",
-    username: req.session.email || "No hay usuario logueado",
-  });
+  Pokemon.fetchLastOne().then(([rows, fieldData]) => {
+    res.render("home",{
+      pokemones: rows,
+      ultimoPokemon: req.cookies.ultimopokemon || "No hay pokemones agreagados ultimamente",
+      username: req.session.email || "No hay usuario logueado",
+    })
+  })
+  .catch(err => console.log(err));
+  
 };
 
 exports.get_agregar_pokemon = (req, res) => {
@@ -16,18 +19,26 @@ exports.get_agregar_pokemon = (req, res) => {
 };
 
 exports.post_agregar_pokemon = (req, res) => {
-  let pokemon = new Pokemon(req.body.nombre, req.body.tipo, req.body.imagen);
-  pokemon.save();
-  res.setHeader("Set-Cookie", "ultimopokemon=" + pokemon.nombre + "; HttpOnly");
-  username: req.session.email || "No hay usuario logueado",
-  res.redirect("/");
+  const pokemon = new Pokemon(req.body.nombre, req.body.tipo, req.body.imagen);
+  pokemon.save()
+  .then(([rows, fieldData]) => {
+    
+    res.setHeader("Set-Cookie", "ultimopokemon=" + pokemon.nombre + "; HttpOnly");
+    username: req.session.email || "No hay usuario logueado",
+    res.redirect("/");
+ 
+  })
+  .catch(err => console.log(err));
 };
 
 exports.get_pokedex = (req, res) => {
+  Pokemon.fetchAll()
+  .then(([rows, fieldData]) => {
   res.render("pokedex", {
-    pokemones: Pokemon.fetchAll(),
+    pokemones: rows,
     username: req.session.email || "No hay usuario logueado",
   });
+}).catch(err => console.log(err));
 };
 
 exports.get_profesor = (req, res) => {
@@ -38,6 +49,21 @@ exports.get_profesor = (req, res) => {
 
 exports.get_tabla_de_tipos = (req, res) => {
   res.render("tabla_de_tipos", {
+    username: req.session.email || "No hay usuario logueado",
+  });
+};
+
+exports.post_modificar_pokemon = (req, res) => {
+  
+  Pokemon.updateLastOne(req.body.nombre, req.body.tipo, req.body.imagen)
+  .then(([rows, fieldData]) => {
+    res.redirect("/");
+  })
+  .catch(err => console.log(err));
+};
+
+exports.get_modificar_pokemon = (req, res) => {
+  res.render("modificar_pokemon", {
     username: req.session.email || "No hay usuario logueado",
   });
 };

@@ -15,9 +15,8 @@
 
                     <div class="flex flex-wrap justify-center gap-4">
 
-                        <% const lastThreePokemons=pokemones.slice(-3); %>
 
-                            <% lastThreePokemons.forEach(pokemon=> { %>
+                            <% pokemones.forEach(pokemon=> { %>
                                 <div class="bg-white p-4 rounded shadow-md">
                                     <img src="<%= pokemon.imagen%>" alt="<%= pokemon.name%>" class="w-40 h-40" />
                                     <h3 class="text-xl font-bold">
@@ -38,6 +37,11 @@
             </div>
             <div class="flex justify-center mt-8 mb-10">
                 <a href="/agregar_pokemon" class="flex bg-blue-500 text-white px-4 py-2 rounded justify-center">Agregar
+                    Pokemon
+                </a>
+            </div>
+            <div class="flex justify-center mt-8 mb-10">
+                <a href="/modificar_pokemon" class="flex bg-blue-500 text-white px-4 py-2 rounded justify-center">Modificar ultimo
                     Pokemon
                 </a>
             </div>

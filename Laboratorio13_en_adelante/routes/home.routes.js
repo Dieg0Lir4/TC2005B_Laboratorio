@@ -11,6 +11,10 @@ router.get('/profesor', homeController.get_profesor);
 
 router.get('/tabla_de_tipos', homeController.get_tabla_de_tipos);
 
+router.get('/modificar_pokemon', homeController.get_modificar_pokemon);
+
+router.post('/modificar_pokemon', homeController.post_modificar_pokemon);
+
 router.get('/', homeController.get_home);
 
 module.exports = router;

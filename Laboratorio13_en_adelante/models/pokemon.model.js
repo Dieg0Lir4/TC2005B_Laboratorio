@@ -1,3 +1,5 @@
+const db = require('../util/database');
+
 const pokemones = [
     {
         nombre: "Bulbasaur",
@@ -26,15 +28,31 @@ module.exports = class Pokemon{
 
     save(){
 
-        pokemones.push({
-            nombre: this.nombre,
-            tipo: this.tipo,
-            imagen: this.imagen
-        });
+        // pokemones.push({
+        //     nombre: this.nombre,
+        //     tipo: this.tipo,
+        //     imagen: this.imagen
+        // });
+
+        
+        
+        return db.execute('INSERT INTO pokemons (nombre, tipo, imagen) VALUES (?, ?, ?)', [this.nombre, this.tipo, this.imagen]);
+        
+
     }
 
     static fetchAll(){
-        return pokemones;
+
+        return db.execute('SELECT * FROM pokemons');
+        //return pokemones;
+    }
+
+    static fetchLastOne(){
+        return db.execute('SELECT * FROM pokemons ORDER BY id DESC LIMIT 1')
+    }
+
+    static updateLastOne(nombre, tipo, imagen){
+        return db.execute('UPDATE pokemons SET nombre = ?, tipo = ?, imagen = ? ORDER BY id DESC LIMIT 1', [nombre, tipo, imagen]);
     }
 
 }
