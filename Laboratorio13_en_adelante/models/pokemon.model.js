@@ -55,4 +55,8 @@ module.exports = class Pokemon{
         return db.execute('UPDATE pokemons SET nombre = ?, tipo = ?, imagen = ? ORDER BY id DESC LIMIT 1', [nombre, tipo, imagen]);
     }
 
+    static fetchID(id){
+        return db.execute('SELECT * FROM pokemons WHERE id = ?', [id]);
+    }
+
 }

@@ -67,3 +67,14 @@ exports.get_modificar_pokemon = (req, res) => {
     username: req.session.email || "No hay usuario logueado",
   });
 };
+
+exports.get_pokemonByID = (req, res) => {
+  const pokeID = req.params.pokeID;
+  Pokemon.fetchID(pokeID).then(([rows, fieldData]) => {
+    res.render("pokedex", {
+      pokemones: rows,
+      username: req.session.email || "No hay usuario logueado",
+    });
+  })
+  .catch(err => console.log(err));
+};
