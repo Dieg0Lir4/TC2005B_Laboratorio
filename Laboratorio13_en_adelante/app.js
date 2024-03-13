@@ -3,6 +3,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const csrf = require('csurf');
+
+
+const csrfProtection = csrf();
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,6 +23,8 @@ app.use(session({
     resave: false, //La sesión no se guardará en cada petición, sino sólo se guardará si algo cambió 
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
 }));
+
+app.use(csrfProtection); 
 
 const homeRoutes = require('./routes/home.routes');
 const pokedexRoutes = require('./routes/pokedex.routes');
