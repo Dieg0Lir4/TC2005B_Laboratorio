@@ -14,13 +14,42 @@
             <nav>
                 <ul class="flex gap-4">
                     <li><a href="/perfil/logout" class="text-white">Hola <%=username%></a></li>
-                    <li><a href="/agregar_pokemon" class="text-white">Agregar Pokémon</a></li>
-                    <li><a href="/pokedex" class="text-white">Pokédex</a></li>
-                    <li><a href="/tabla_de_tipos" class="text-white">Tabla de Tipos</a></li>
-                    <li><a href="/profesor" class="text-white">Profesor</a></li>
-                    <li><a href="/perfil/login" cclass="text-white">Login</a></li>
-                    <li><a href="/perfil/singup" cclass="text-white">Sing up</a></li>
-                </ul>
+                    <% for (permiso of permisos) { %>
+                        <%if(permiso.name=="agregar pokemon"){%>
+                            <li><a href="/agregar_pokemon" class="text-white">Agregar Pokémon</a></li>
+                        <%}%>
+                    <%}%>
+
+                    <% for (permiso of permisos) { %>
+                        <%if(permiso.name=="ver pokedex"){%>
+                            <li><a href="/pokedex" class="text-white">Pokédex</a></li>
+                        <%}%>
+                    <%}%>
+
+                    <% for (permiso of permisos) { %>
+                        <%if(permiso.name=="ver tabla de tipos"){%>
+                            <li><a href="/tabla_de_tipos" class="text-white">Tabla de Tipos</a></li>
+                        <%}%>
+                    <%}%>
+
+                    <% for (permiso of permisos) { %>
+                        <%if(permiso.name=="hablar con el profesor"){%>
+                            <li><a href="/profesor" class="text-white">Profesor</a></li>
+                        <%}%>
+                    <%}%>
+
+                    <% for (permiso of permisos) { %>
+                        <%if(permiso.name=="login"){%>
+                            <li><a href="/perfil/login" cclass="text-white">Login</a></li>
+                        <%}%>
+                    <%}%>
+
+                    <% for (permiso of permisos) { %>
+                        <%if(permiso.name=="signup"){%>
+                            <li><a href="/perfil/singup" cclass="text-white">Sing up</a></li>
+                        <%}%>
+                    <%}%>
+                    </ul>
             </nav>
         </header>
         
