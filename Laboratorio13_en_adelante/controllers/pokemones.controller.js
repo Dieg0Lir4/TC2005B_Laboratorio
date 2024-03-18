@@ -6,6 +6,7 @@ exports.get_home = (req, res) => {
       pokemones: rows,
       ultimoPokemon: req.cookies.ultimopokemon || "No hay pokemones agreagados ultimamente",
       username: req.session.username || "No hay usuario logueado",
+      permisos: req.session.permisos || [],
     })
   })
   .catch(err => console.log(err));
@@ -16,6 +17,7 @@ exports.get_agregar_pokemon = (req, res) => {
   res.render("agregar_pokemon", {
     username: req.session.username || "No hay usuario logueado",
     csrfToken: req.csrfToken(),
+    permisos: req.session.permisos || [],
   });
 };
 
@@ -38,6 +40,7 @@ exports.get_pokedex = (req, res) => {
   res.render("pokedex", {
     pokemones: rows,
     username: req.session.username || "No hay usuario logueado",
+    permisos: req.session.permisos || [],
   });
 }).catch(err => console.log(err));
 };
@@ -45,12 +48,14 @@ exports.get_pokedex = (req, res) => {
 exports.get_profesor = (req, res) => {
   res.render("profesor", {
     username: req.session.username || "No hay usuario logueado",
+    permisos: req.session.permisos || [],
   });
 };
 
 exports.get_tabla_de_tipos = (req, res) => {
   res.render("tabla_de_tipos", {
     username: req.session.username || "No hay usuario logueado",
+    permisos: req.session.permisos || [],
   });
 };
 

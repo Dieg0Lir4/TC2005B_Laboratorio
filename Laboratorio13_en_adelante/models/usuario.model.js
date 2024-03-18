@@ -25,5 +25,10 @@ module.exports = class Usuario{
     static fetchOne(username){
         return db.execute('SELECT * FROM usuarios WHERE username = ?', [username]);
     }
+
+    static fetchPermissions(username){
+        return db.execute('SELECT p.name FROM permisos p JOIN roles_permisos rp ON p.id = rp.permisosID JOIN roles r ON rp.rolID = r.id JOIN usuarios_roles ur ON r.id = ur.rolID JOIN usuarios u ON ur.usuarioID = u.id WHERE u.username = ?;', [username]);
+    }
+
 }
 

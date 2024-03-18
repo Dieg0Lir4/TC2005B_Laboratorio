@@ -9,6 +9,7 @@ exports.get_login = (req, res) => {
     registro: false,
     csrfToken: req.csrfToken(),
     error: error,
+    permisos: req.session.permisos || [],
   });
 };
 
@@ -17,6 +18,7 @@ exports.get_register = (req, res) => {
     username: req.session.username || "No hay usuario logueado",
     registro: true,
     csrfToken: req.csrfToken(),
+    permisos: req.session.permisos || [],
   });
 };
 
@@ -41,25 +43,33 @@ exports.post_login = (req, res) => {
           .compare(req.body.password, usuario.password)
           .then((match) => {
             if (match) {
-              req.session.username = req.body.username;
-              req.session.isLoggedIn = true;
-              res.redirect("/profesor");
+              Usuario.fetchPermissions(req.body.username)
+                .then(([permisos, fieldData]) => {
+                  console.log(permisos);
+                  req.session.permisos = permisos;
+                  req.session.username = req.body.username;
+                  req.session.isLoggedIn = true;
+                  res.redirect("/profesor");
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
             } else {
-              req.session.error = "Contraseña incorrecta"
+              req.session.error = "Contraseña incorrecta";
               res.redirect("/perfil/login");
             }
           })
           .catch((err) => console.log(err));
       } else {
-        req.session.error = "Usuario no encontrado"
+        req.session.error = "Usuario no encontrado";
         res.redirect("/perfil/login");
       }
     })
     .catch((err) => console.log(err));
 };
 
-exports.get_logout = (request, response, next) => {
-  request.session.destroy(() => {
+exports.get_logout = (req, response, next) => {
+  req.session.destroy(() => {
     response.redirect("/perfil/login"); //Este código se ejecuta cuando la sesión se elimina.
   });
 };

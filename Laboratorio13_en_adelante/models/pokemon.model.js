@@ -59,4 +59,6 @@ module.exports = class Pokemon{
         return db.execute('SELECT * FROM pokemons WHERE id = ?', [id]);
     }
 
+    
+
 }
