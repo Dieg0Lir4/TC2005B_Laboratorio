@@ -45,7 +45,6 @@ exports.post_login = (req, res) => {
             if (match) {
               Usuario.fetchPermissions(req.body.username)
                 .then(([permisos, fieldData]) => {
-                  console.log(permisos);
                   req.session.permisos = permisos;
                   req.session.username = req.body.username;
                   req.session.isLoggedIn = true;

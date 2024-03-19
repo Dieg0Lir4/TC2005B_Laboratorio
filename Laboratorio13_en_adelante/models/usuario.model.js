@@ -10,12 +10,24 @@ module.exports = class Usuario{
     save(){
         //return db.execute('INSERT INTO usuarios (username, password) VALUES (?, ?)', [this.username, this.password]);
         return bcrypt.hash(this.password, 12)
-            .then((password_cifrado) => {
+            .then(async (password_cifrado) => {
+                try{
+
+                const [result] = await db.execute(`INSERT INTO usuarios (username, password) 
+                VALUES (?, ?)`, 
+                [this.username, password_cifrado]);
+
+                let id = result.insertId;
+                console.log("esta es la id: " +id);
+
                 return db.execute(
-                    `INSERT INTO usuarios (username, password) 
+                    `INSERT INTO usuarios_roles (usuarioID, rolID) 
                     VALUES (?, ?)`, 
-                    [this.username, password_cifrado]);
-            })
+                    [id, 1]);
+                
+            }catch(err){
+                console.log(err);
+            }})
             .catch((error) => {
                 console.log(error);
             });

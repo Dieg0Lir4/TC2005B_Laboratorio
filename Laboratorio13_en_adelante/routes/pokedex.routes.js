@@ -1,10 +1,11 @@
 express = require('express');
 const router = express.Router();
+const pokedex = require('../util/can-pokedex')
 
 const homeController = require('../controllers/pokemones.controller');
 
-router.get('/', homeController.get_pokedex);
+router.get('/', pokedex,homeController.get_pokedex);
 
-router.get('/:pokeID',homeController.get_pokemonByID);
+router.get('/:pokeID', pokedex,homeController.get_pokemonByID);
 
 module.exports = router;
